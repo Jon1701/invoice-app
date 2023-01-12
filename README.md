@@ -6,7 +6,7 @@
 
 ## Project Description
 
-Web application used to generate Invoices. 
+Web application used to generate Invoices.
 
 ## Prerequisites
 
@@ -22,21 +22,22 @@ Web application used to generate Invoices.
 
 ```
 |
-├── __tests__/                      # Tests only for Pages
-|       └── pages/                  # Tests only for Pages
-|             └── __snapshots__/    # Generated snapshots
+├── __pages__/                      # Tests & Stories for Pages only
+|       ├── __tests__/              # Tests for Pages
+|       |       └── __snapshots__/  # Generated snapshots
+|       |
+|       └── stories/                # Stories for Pages
 |
 ├── .next/                          # Build Folder
 ├── .storybook/                     # Storybook Configuration Files
 ├── .vscode/
 |       └── settings.json           # VSCode Settings
+|
 ├── components/                     # Reusable Components
 ├── coverage/                       # Jest Code Coverage Reports
 ├── node_modules/                   # Node Dependencies Folder
 ├── pages/                          # Next.js Pages
 ├── public/                         # Public Assets
-├── stories/                        # Storybook Stories for Pages
-|     └── pages/                    # Storybook Stories for Pages
 |
 ├── .eslintrc.json                  # ESLint Configuration File
 ├── .gitignore                      # Files/Folders ignored by Git

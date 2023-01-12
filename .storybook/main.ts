@@ -3,12 +3,7 @@ import type { Configuration } from 'webpack';
 import type { StorybookConfig } from '@storybook/core-common';
 
 const config: StorybookConfig = {
-  stories: [
-    '../**/*.stories.mdx',
-    '../**/*.stories.@(js|jsx|ts|tsx)',
-    '../stories/pages/*.stories.mdx',
-    '../stories/pages/*.stories.@(js|jsx|ts|tsx)',
-  ],
+  stories: ['../**/*.stories.mdx', '../**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
