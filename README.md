@@ -1,4 +1,4 @@
-# Next.js Application Template
+# Invoice App
 
 ## Status
 
@@ -6,7 +6,7 @@
 
 ## Project Description
 
-Template repository to quickly start developing Next.js and TypeScript applications.
+Web application used to generate Invoices. 
 
 ## Prerequisites
 

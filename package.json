@@ -1,12 +1,12 @@
 {
-  "name": "nextjs-application-template",
-  "description": "Template repository to quickly start developing Next.js and TypeScript applications.",
+  "name": "invoice-app",
+  "description": "Web application used to generate Invoices.",
   "keywords": [
     "next.js",
     "typescript",
     "project starter"
   ],
-  "homepage": "https://github.com/Jon1701/nextjs-application-template",
+  "homepage": "https://github.com/Jon1701/invoice-app",
   "license": "GPL-3.0-or-later",
   "version": "1.0.0",
   "author": {
