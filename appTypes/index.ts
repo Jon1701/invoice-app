@@ -36,6 +36,6 @@ export interface Invoice {
   currency: Currency;
   status: InvoiceStatus;
   items: Array<InvoiceItem>;
-  billerAddress: Address | ContactInfo;
-  clientAddress: Address | ContactInfo;
+  billerAddress: Address & ContactInfo;
+  clientAddress: Address & ContactInfo;
 }
