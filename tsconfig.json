@@ -18,6 +18,7 @@
     "paths": {
       "@appTypes/*": ["appTypes/*"],
       "@components/*": ["components/*"],
+      "@hooks/*": ["hooks/*"],
       "@layouts/*": ["layouts/*"],
       "@pages/*": ["pages/*"],
       "@utils/*": ["utils/*"]
