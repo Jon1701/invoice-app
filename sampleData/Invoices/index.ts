@@ -86,4 +86,28 @@ export const sampleInvoices: Array<Invoice> = [
     },
     items: [{ description: 'Hull Plate', unitPrice: 5851674, quantity: 50 }],
   },
+  {
+    id: '4',
+    currency: Currency.CAD,
+    status: InvoiceStatus.Paid,
+    billerAddress: {
+      name: 'William T. Riker',
+      email: 'riker@titan.com',
+      line1: '80102 Titan Avenue',
+      city: 'Unknown City',
+      state: 'Unknown State',
+      postalCode: 'M7B6D1',
+      country: 'Canada',
+    },
+    clientAddress: {
+      name: 'Beverly Crusher',
+      email: 'crusher@sf.medical',
+      line1: '18276 Pasteur Lane',
+      city: 'Los Angeles',
+      state: 'California',
+      postalCode: '89182',
+      country: 'United States',
+    },
+    items: [],
+  },
 ];
