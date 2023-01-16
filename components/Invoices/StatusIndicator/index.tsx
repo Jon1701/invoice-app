@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+
 import { Invoice, InvoiceStatus } from '@appTypes/index';
+import displayStatus from '@utils/invoices/displayStatus';
 
 /**
  * Indicator default style.
@@ -43,25 +45,6 @@ const StyledPaidIndicator = styled(StyledBaseIndicator)`
   background-color: #051b11;
   color: #75b798;
 `;
-
-/**
- * Returns the user-friendly status from an Invoice status enum.
- */
-export const displayStatus = (status: InvoiceStatus): string => {
-  switch (status) {
-    case InvoiceStatus.Draft:
-      return 'Draft';
-
-    case InvoiceStatus.Paid:
-      return 'Paid';
-
-    case InvoiceStatus.Pending:
-      return 'Pending';
-
-    default:
-      return 'Unknown';
-  }
-};
 
 interface Props {
   /**
