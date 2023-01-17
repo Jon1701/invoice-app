@@ -24,13 +24,14 @@ export const sampleInvoices: Array<Invoice> = [
       country: 'Canada',
     },
     items: [
-      { description: 'Self Sealing Stem Bolt', unitPrice: 3618, quantity: 5 },
+      { description: 'Self Sealing Stem Bolt', unitPrice: 36.18, quantity: 5 },
       {
         description: 'Reverse Ratcheting Router',
-        unitPrice: 432,
+        unitPrice: 4.32,
         quantity: 10,
       },
-      { description: 'Gold-pressed Latinum', unitPrice: 1236, quantity: 88 },
+      { description: 'Gold-pressed Latinum', unitPrice: 12.36, quantity: 88 },
+      { description: 'Plasma Conduit', unitPrice: 9102, quantity: 84 },
     ],
   },
   {
@@ -57,9 +58,9 @@ export const sampleInvoices: Array<Invoice> = [
       country: 'Canada',
     },
     items: [
-      { description: 'Tricorder', unitPrice: 3617, quantity: 277 },
-      { description: 'Medical Tricorder', unitPrice: 584, quantity: 3693 },
-      { description: 'Tribble', unitPrice: 790, quantity: 363 },
+      { description: 'Tricorder', unitPrice: 3617.12, quantity: 277 },
+      { description: 'Medical Tricorder', unitPrice: 5.84, quantity: 3693 },
+      { description: 'Tribble', unitPrice: 7.9, quantity: 363 },
     ],
   },
   {

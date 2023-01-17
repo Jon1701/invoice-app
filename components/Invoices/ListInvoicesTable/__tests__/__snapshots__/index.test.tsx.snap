@@ -134,7 +134,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
               class="sc-iBYQkv dUNxtU"
             >
               <span>
-                $131,178.00
+                $765,879.78
               </span>
             </td>
           </tr>
@@ -164,7 +164,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
               class="sc-iBYQkv dUNxtU"
             >
               <span>
-                $3,445,391.00
+                $1,026,377.06
               </span>
             </td>
           </tr>
@@ -289,7 +289,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
             class="sc-iBYQkv dUNxtU"
           >
             <span>
-              $131,178.00
+              $765,879.78
             </span>
           </td>
         </tr>
@@ -319,7 +319,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
             class="sc-iBYQkv dUNxtU"
           >
             <span>
-              $3,445,391.00
+              $1,026,377.06
             </span>
           </td>
         </tr>
