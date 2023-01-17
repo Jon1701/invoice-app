@@ -15,7 +15,7 @@ interface BaseStyledAlertProps {
   /**
    * Indicates if there should be space below the Alert.
    */
-  showSpaceBelow: boolean;
+  showSpaceBelow?: boolean;
 }
 
 /**
@@ -100,7 +100,7 @@ export interface AlertProps {
   /**
    * Indicates if the alert type symbol should be visible.
    */
-  showSymbol: boolean;
+  showSymbol?: boolean;
 
   /**
    * Type of alert.
@@ -115,7 +115,7 @@ export interface AlertProps {
   /**
    * Indicates if there should be space below the alert.
    */
-  showSpaceBelow: boolean;
+  showSpaceBelow?: boolean;
 
   /**
    * Alert contents.
