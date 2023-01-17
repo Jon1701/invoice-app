@@ -81,6 +81,162 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
       <table
         class="sc-eDvSVe efzZSJ"
       >
+        <thead>
+          <tr
+            class="sc-gKPRtg iZLckb"
+          >
+            <th
+              class="sc-jSUZER ebMnHH"
+            >
+              ID
+            </th>
+            <th
+              class="sc-jSUZER ebMnHH"
+            >
+              Status
+            </th>
+            <th
+              class="sc-jSUZER ebMnHH"
+            >
+              Client Name
+            </th>
+            <th
+              class="sc-jSUZER ebMnHH"
+            >
+              Amount
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="sc-gKPRtg iZLckb"
+          >
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              1
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              <span
+                class="sc-bcXHqe sc-gswNZR grKKXY gVoFOn"
+              >
+                Draft
+              </span>
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              Jonathan Archer
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              <span>
+                $131,178.00
+              </span>
+            </td>
+          </tr>
+          <tr
+            class="sc-gKPRtg iZLckb"
+          >
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              2
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              <span
+                class="sc-bcXHqe sc-dkrFOg grKKXY hRcOVh"
+              >
+                Pending
+              </span>
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              Hikaru Sulu
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              <span>
+                $3,445,391.00
+              </span>
+            </td>
+          </tr>
+          <tr
+            class="sc-gKPRtg iZLckb"
+          >
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              3
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              <span
+                class="sc-bcXHqe sc-dkrFOg grKKXY hRcOVh"
+              >
+                Pending
+              </span>
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              Jean-Luc Picard
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              <span>
+                ¥292,583,700
+              </span>
+            </td>
+          </tr>
+          <tr
+            class="sc-gKPRtg iZLckb"
+          >
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              4
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              <span
+                class="sc-bcXHqe sc-hLBbgP grKKXY divHvX"
+              >
+                Paid
+              </span>
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              William T. Riker
+            </td>
+            <td
+              class="sc-iBYQkv dUNxtU"
+            >
+              <span>
+                $0.00
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>,
+  "container": <div>
+    <table
+      class="sc-eDvSVe efzZSJ"
+    >
+      <thead>
         <tr
           class="sc-gKPRtg iZLckb"
         >
@@ -105,6 +261,8 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
             Amount
           </th>
         </tr>
+      </thead>
+      <tbody>
         <tr
           class="sc-gKPRtg iZLckb"
         >
@@ -225,157 +383,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
             </span>
           </td>
         </tr>
-      </table>
-    </div>
-  </body>,
-  "container": <div>
-    <table
-      class="sc-eDvSVe efzZSJ"
-    >
-      <tr
-        class="sc-gKPRtg iZLckb"
-      >
-        <th
-          class="sc-jSUZER ebMnHH"
-        >
-          ID
-        </th>
-        <th
-          class="sc-jSUZER ebMnHH"
-        >
-          Status
-        </th>
-        <th
-          class="sc-jSUZER ebMnHH"
-        >
-          Client Name
-        </th>
-        <th
-          class="sc-jSUZER ebMnHH"
-        >
-          Amount
-        </th>
-      </tr>
-      <tr
-        class="sc-gKPRtg iZLckb"
-      >
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          1
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          <span
-            class="sc-bcXHqe sc-gswNZR grKKXY gVoFOn"
-          >
-            Draft
-          </span>
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          Jonathan Archer
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          <span>
-            $131,178.00
-          </span>
-        </td>
-      </tr>
-      <tr
-        class="sc-gKPRtg iZLckb"
-      >
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          2
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          <span
-            class="sc-bcXHqe sc-dkrFOg grKKXY hRcOVh"
-          >
-            Pending
-          </span>
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          Hikaru Sulu
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          <span>
-            $3,445,391.00
-          </span>
-        </td>
-      </tr>
-      <tr
-        class="sc-gKPRtg iZLckb"
-      >
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          3
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          <span
-            class="sc-bcXHqe sc-dkrFOg grKKXY hRcOVh"
-          >
-            Pending
-          </span>
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          Jean-Luc Picard
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          <span>
-            ¥292,583,700
-          </span>
-        </td>
-      </tr>
-      <tr
-        class="sc-gKPRtg iZLckb"
-      >
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          4
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          <span
-            class="sc-bcXHqe sc-hLBbgP grKKXY divHvX"
-          >
-            Paid
-          </span>
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          William T. Riker
-        </td>
-        <td
-          class="sc-iBYQkv dUNxtU"
-        >
-          <span>
-            $0.00
-          </span>
-        </td>
-      </tr>
+      </tbody>
     </table>
   </div>,
   "debug": [Function],

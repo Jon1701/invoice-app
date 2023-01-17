@@ -83,13 +83,15 @@ const ListInvoicesTable: React.FC<Props> = ({ invoices }: Props) => {
 
   return (
     <Table>
-      <Row>
-        <Heading>ID</Heading>
-        <Heading>Status</Heading>
-        <Heading>Client Name</Heading>
-        <Heading>Amount</Heading>
-      </Row>
-      {nodes}
+      <thead>
+        <Row>
+          <Heading>ID</Heading>
+          <Heading>Status</Heading>
+          <Heading>Client Name</Heading>
+          <Heading>Amount</Heading>
+        </Row>
+      </thead>
+      <tbody>{nodes}</tbody>
     </Table>
   );
 };
