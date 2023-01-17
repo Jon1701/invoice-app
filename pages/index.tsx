@@ -1,52 +1,89 @@
-import React from 'react';
-import { NextPage } from 'next';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 
+import useGetInvoices, {
+  ReturnPayload,
+  HookStatus,
+} from '@hooks/useGetInvoices';
+import { Alert, AlertTypes } from '@components/Alert';
+import { breakpoints } from '@utils/breakpoints';
+import { Invoice } from '@appTypes/index';
+import Layout from '@layouts/IndexPage';
+import ListInvoicesTable from '@components/Invoices/ListInvoicesTable';
+import Loading from '@components/Loading';
+import NavigationBar from '@components/NavigationBar';
+
+import { NextPageWithLayout } from './_app';
+
 /**
- * Styled main component.
+ * Component container.
  */
-const Main = styled.main`
-  display: grid;
-  align-content: center;
+const Container = styled.main``;
 
-  background-color: #181818;
-  color: #eaeaea;
-
-  min-height: 100vh;
-
-  text-align: center;
+/**
+ * Content margins.
+ */
+const Content = styled.div`
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 50px 10px;
 `;
 
 /**
- * Styled H1 component.
+ * Styled H1.
  */
-const H1 = styled.h1``;
+const H1 = styled.h1`
+  margin-top: 0;
+`;
 
 /**
  * Index page.
  */
-const IndexPage: NextPage = () => {
+const IndexPage: NextPageWithLayout = () => {
+  // Invoice data.
+  const { status, invoices, getInvoices }: ReturnPayload = useGetInvoices();
+
+  useEffect(() => {
+    // Fetch Invoices.
+    getInvoices();
+  }, []);
+
+  /**
+   * Displays a table of Invoices, or an error.
+   */
+  const renderDataTable = (): React.ReactNode => {
+    switch (status) {
+      case HookStatus.InProgress:
+      case HookStatus.Initial:
+        return <Loading />;
+
+      case HookStatus.Success:
+        return <ListInvoicesTable invoices={invoices} />;
+
+      default:
+        return (
+          <div style={{ textAlign: 'center' }}>
+            There was a problem loading Invoices.
+          </div>
+        );
+        break;
+    }
+  };
+
   return (
-    <React.Fragment>
-      <Head>
-        <title>Next.js Application Template</title>
-        <meta
-          name="description"
-          content="Template repository to quickly start developing Next.js and TypeScript applications."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Main>
-        <H1>Next.js Application Template</H1>
-        <p>
-          This is a template repository to quickly start developing Next.js and
-          TypeScript applications.
-        </p>
-      </Main>
-    </React.Fragment>
+    <Container>
+      <Content>
+        <H1>Invoices</H1>
+
+        {renderDataTable()}
+      </Content>
+    </Container>
   );
+};
+
+IndexPage.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default IndexPage;
