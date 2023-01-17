@@ -1,8 +1,12 @@
 import { Currency, Invoice, InvoiceStatus } from '@appTypes/index';
+import calculateInvoiceTotalFromItems from '@utils/invoices/calculateInvoiceTotalFromItems';
 
-export const sampleInvoices: Array<Invoice> = [
+// Original Invoice data with placeholder calculated values to satisfy interface
+// requirements.
+const originalData: Array<Invoice> = [
   {
     id: '1',
+    amount: { total: 0 },
     currency: Currency.CAD,
     status: InvoiceStatus.Draft,
     billerAddress: {
@@ -36,6 +40,7 @@ export const sampleInvoices: Array<Invoice> = [
   },
   {
     id: '2',
+    amount: { total: 0 },
     currency: Currency.USD,
     status: InvoiceStatus.Pending,
     billerAddress: {
@@ -65,6 +70,7 @@ export const sampleInvoices: Array<Invoice> = [
   },
   {
     id: '3',
+    amount: { total: 0 },
     currency: Currency.JPY,
     status: InvoiceStatus.Pending,
     billerAddress: {
@@ -89,6 +95,7 @@ export const sampleInvoices: Array<Invoice> = [
   },
   {
     id: '4',
+    amount: { total: 0 },
     currency: Currency.CAD,
     status: InvoiceStatus.Paid,
     billerAddress: {
@@ -112,3 +119,18 @@ export const sampleInvoices: Array<Invoice> = [
     items: [],
   },
 ];
+
+// Transformed data with calculated values.
+export const sampleInvoices: Array<Invoice> = originalData.map(
+  (invoice: Invoice) => {
+    // Get total amount from items (quantity and unit price.)
+    const total: number = invoice.items.reduce(
+      calculateInvoiceTotalFromItems,
+      0
+    );
+
+    invoice.amount.total = total;
+
+    return invoice;
+  }
+);

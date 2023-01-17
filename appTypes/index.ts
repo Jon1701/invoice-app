@@ -31,8 +31,13 @@ export interface InvoiceItem {
   quantity: number;
 }
 
+export interface InvoiceAmounts {
+  total: number;
+}
+
 export interface Invoice {
   id: string;
+  amount: InvoiceAmounts;
   currency: Currency;
   status: InvoiceStatus;
   items: Array<InvoiceItem>;

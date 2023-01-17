@@ -5,7 +5,6 @@ import { Invoice, InvoiceItem } from '@appTypes/index';
 
 import { DisplayFormattedCurrency } from '@components/Currency';
 import { StatusIndicator } from '@components/Invoices/StatusIndicator';
-import calculateInvoiceTotalFromItems from '@utils/invoices/calculateInvoiceTotalFromItems';
 
 /**
  * Styled table.
@@ -74,7 +73,7 @@ const ListInvoicesTable: React.FC<Props> = ({ invoices }: Props) => {
         <Column>
           <DisplayFormattedCurrency
             currencyCode={invoice.currency}
-            amount={invoice.items.reduce(calculateInvoiceTotalFromItems, 0)}
+            amount={invoice.amount.total}
           />
         </Column>
       </Row>
