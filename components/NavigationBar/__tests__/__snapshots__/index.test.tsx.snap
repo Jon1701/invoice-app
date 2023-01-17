@@ -6,7 +6,7 @@ exports[`Navigation Bar component renders correctly 1`] = `
   "baseElement": <body>
     <div>
       <nav
-        class="sc-bcXHqe hRJJuN"
+        class="sc-bcXHqe kEKvxM"
       >
         <ul
           class="sc-gswNZR hmOJjW"
@@ -15,7 +15,7 @@ exports[`Navigation Bar component renders correctly 1`] = `
             class="sc-dkrFOg"
           >
             <a
-              class="sc-hLBbgP khVevQ"
+              class="sc-hLBbgP glvHgz"
               href="/"
             >
               <svg
@@ -41,7 +41,7 @@ exports[`Navigation Bar component renders correctly 1`] = `
   </body>,
   "container": <div>
     <nav
-      class="sc-bcXHqe hRJJuN"
+      class="sc-bcXHqe kEKvxM"
     >
       <ul
         class="sc-gswNZR hmOJjW"
@@ -50,7 +50,7 @@ exports[`Navigation Bar component renders correctly 1`] = `
           class="sc-dkrFOg"
         >
           <a
-            class="sc-hLBbgP khVevQ"
+            class="sc-hLBbgP glvHgz"
             href="/"
           >
             <svg
