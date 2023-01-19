@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
-import FormFieldErrors from '../FieldErrors';
+import FormFieldErrors from '@components/Form/FieldErrors';
 
 interface ContainerProps {
   /**
@@ -59,7 +59,7 @@ const StyledInput = styled.input`
   box-sizing: border-box;
 `;
 
-interface StyledClearButtonProps {
+interface StyledInputButtonProps {
   /**
    * Indicates if the button is disabled.
    */
@@ -67,30 +67,35 @@ interface StyledClearButtonProps {
 }
 
 /**
- * Styled clear button.
+ * Container for the Styled Input button.
  */
-const StyledClearButton = styled.button<StyledClearButtonProps>`
+const ContainerStyledInputButton = styled.span`
+  padding-right: 10px;
+`;
+
+/**
+ * Styled Input button.
+ */
+const StyledInputButton = styled.button<StyledInputButtonProps>`
   all: unset;
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
 `;
 
-/**
- * Container for the Clear button.
- */
-const ContainerClearButton = styled.span`
-  padding-right: 10px;
-`;
+export interface BaseInputProps {
+  /**
+   * Reference to this element.
+   */
+  ref?: React.ForwardedRef<HTMLInputElement>;
 
-interface Props {
   /**
    * Unique ID.
    */
-  id: string | undefined;
+  id?: string;
 
   /**
    * Input type.
    */
-  type?: React.HTMLInputTypeAttribute | undefined;
+  type?: React.HTMLInputTypeAttribute;
 
   /**
    * Input value.
@@ -124,12 +129,15 @@ interface Props {
 }
 
 /**
- * Text/Email form field input component.
+ * Base input field control.
  *
  * @param props Component props.
  * @param ref Reference to this element.
  */
-const Input: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
+export const BaseInput: React.FC<BaseInputProps> = React.forwardRef<
+  HTMLInputElement,
+  BaseInputProps
+>(
   (
     {
       id,
@@ -147,12 +155,9 @@ const Input: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
       errorMessages !== undefined && errorMessages.length > 0;
 
     return (
-      <Container
-        ref={ref}
-        hasErrors={hasErrors}
-        disabled={disabled}
-        readOnly={readOnly}>
+      <Container hasErrors={hasErrors} disabled={disabled} readOnly={readOnly}>
         <StyledInput
+          ref={ref}
           id={id}
           type={type}
           value={value}
@@ -161,20 +166,18 @@ const Input: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
           readOnly={readOnly}
         />
         {!disabled && !readOnly ? (
-          <ContainerClearButton>
-            <StyledClearButton
+          <ContainerStyledInputButton>
+            <StyledInputButton
               type="button"
               onClick={handleClearButtonClick}
               disabled={disabled}>
               <FontAwesomeIcon icon={faCircleXmark} />
-            </StyledClearButton>
-          </ContainerClearButton>
+            </StyledInputButton>
+          </ContainerStyledInputButton>
         ) : undefined}
       </Container>
     );
   }
 );
 
-Input.displayName = 'Input';
-
-export default Input;
+BaseInput.displayName = 'Input';
