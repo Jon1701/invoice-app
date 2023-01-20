@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { errorMappings, argTypes } from '../common/index.stories';
+import { argTypes } from '@components/Form/common/styles.stories';
 
 import Dropdown from '.';
 

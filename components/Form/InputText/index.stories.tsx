@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { args, argTypes } from '../common/index.stories';
+import { args, argTypes } from '@components/Form/common/styles.stories';
 
 import InputText from '.';
 

@@ -1,7 +1,6 @@
 import React from 'react';
-import { BaseInputProps } from '../common';
 
-import { BaseInput } from '../common';
+import { BaseInput, BaseInputProps } from '../common/BaseInput';
 
 /**
  * Omit the type prop.
