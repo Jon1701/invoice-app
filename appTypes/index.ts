@@ -23,7 +23,7 @@ export interface ContactInfo {
   name: string;
   email: string;
   phone?: string;
-  address?: Address;
+  address: Address;
 }
 
 export interface InvoiceItem {
