@@ -8,7 +8,7 @@ exports[`<ListInvoicesTable /> with empty invoices prop it should render without
       <div
         class="sc-ftTHYK kpkkbv"
       >
-        No invoices found.
+        No Invoices found.
       </div>
     </div>
   </body>,
@@ -16,7 +16,7 @@ exports[`<ListInvoicesTable /> with empty invoices prop it should render without
     <div
       class="sc-ftTHYK kpkkbv"
     >
-      No invoices found.
+      No Invoices found.
     </div>
   </div>,
   "debug": [Function],
@@ -128,7 +128,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
             <td
               class="sc-iBYQkv dUNxtU"
             >
-              Jonathan Archer
+              Kathryn Janeway
             </td>
             <td
               class="sc-iBYQkv dUNxtU"
@@ -158,7 +158,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
             <td
               class="sc-iBYQkv dUNxtU"
             >
-              Hikaru Sulu
+              James Kirk
             </td>
             <td
               class="sc-iBYQkv dUNxtU"
@@ -188,7 +188,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
             <td
               class="sc-iBYQkv dUNxtU"
             >
-              Jean-Luc Picard
+              Locutus of Borg
             </td>
             <td
               class="sc-iBYQkv dUNxtU"
@@ -218,7 +218,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
             <td
               class="sc-iBYQkv dUNxtU"
             >
-              William T. Riker
+              Beverly Crusher
             </td>
             <td
               class="sc-iBYQkv dUNxtU"
@@ -283,7 +283,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
           <td
             class="sc-iBYQkv dUNxtU"
           >
-            Jonathan Archer
+            Kathryn Janeway
           </td>
           <td
             class="sc-iBYQkv dUNxtU"
@@ -313,7 +313,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
           <td
             class="sc-iBYQkv dUNxtU"
           >
-            Hikaru Sulu
+            James Kirk
           </td>
           <td
             class="sc-iBYQkv dUNxtU"
@@ -343,7 +343,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
           <td
             class="sc-iBYQkv dUNxtU"
           >
-            Jean-Luc Picard
+            Locutus of Borg
           </td>
           <td
             class="sc-iBYQkv dUNxtU"
@@ -373,7 +373,7 @@ exports[`<ListInvoicesTable /> with prop invoices set to sample data it should r
           <td
             class="sc-iBYQkv dUNxtU"
           >
-            William T. Riker
+            Beverly Crusher
           </td>
           <td
             class="sc-iBYQkv dUNxtU"

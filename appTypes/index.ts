@@ -23,6 +23,7 @@ export interface ContactInfo {
   name: string;
   email: string;
   phone?: string;
+  address?: Address;
 }
 
 export interface InvoiceItem {
@@ -41,6 +42,6 @@ export interface Invoice {
   currency: Currency;
   status: InvoiceStatus;
   items: Array<InvoiceItem>;
-  billerAddress: Address & ContactInfo;
-  clientAddress: Address & ContactInfo;
+  biller: ContactInfo;
+  client: ContactInfo;
 }

@@ -59,7 +59,7 @@ interface Props {
  */
 const ListInvoicesTable: React.FC<Props> = ({ invoices }: Props) => {
   if (invoices.length === 0) {
-    return <ContainerNoInvoices>No invoices found.</ContainerNoInvoices>;
+    return <ContainerNoInvoices>No Invoices found.</ContainerNoInvoices>;
   }
 
   const nodes = invoices.map((invoice: Invoice) => {
@@ -69,7 +69,7 @@ const ListInvoicesTable: React.FC<Props> = ({ invoices }: Props) => {
         <Column>
           <StatusIndicator status={invoice.status} />
         </Column>
-        <Column>{invoice.billerAddress.name}</Column>
+        <Column>{invoice.client.name}</Column>
         <Column>
           <DisplayFormattedCurrency
             currencyCode={invoice.currency}
