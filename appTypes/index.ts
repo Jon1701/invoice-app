@@ -27,6 +27,7 @@ export interface ContactInfo {
 }
 
 export interface InvoiceItem {
+  id?: string;
   description: string;
   unitPrice: number;
   quantity: number;
