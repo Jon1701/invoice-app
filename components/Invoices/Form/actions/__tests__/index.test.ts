@@ -1,4 +1,4 @@
-import { Currency, Invoice, InvoiceStatus } from '@appTypes/index';
+import { Currency, Invoice, InvoiceStatus, InvoiceItem } from '@appTypes/index';
 import { describe, expect, test } from '@jest/globals';
 
 import { sampleInvoices } from '@sampleData/Invoices';
@@ -26,6 +26,14 @@ import {
   setClientAddressState,
   setClientAddressPostalCode,
   setClientAddressCountry,
+  addBlankInvoiceItem,
+  deleteInvoiceItem,
+  setInvoiceItemQuantity,
+  setInvoiceItemDescription,
+  setInvoiceItemUnitPrice,
+  InvoiceItemQuantityPayload,
+  InvoiceItemDescriptionPayload,
+  InvoiceItemUnitPricePayload,
 } from '../';
 
 describe('setInvoice()', () => {
@@ -288,6 +296,82 @@ describe('setClientAddressCountry()', () => {
     const expected: ActionCreator<string> = {
       type: ActionTypeEnums.SetClientAddressCountry,
       payload: country,
+    };
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe('addBlankInvoiceItem()', () => {
+  test('should return the corresponding action', () => {
+    const invoiceItem: InvoiceItem = {
+      description: 'Self-sealing Stem Bolt',
+      quantity: 1701,
+      unitPrice: 100,
+    };
+
+    const actual = addBlankInvoiceItem();
+    const expected: ActionCreator<void> = {
+      type: ActionTypeEnums.AddBlankInvoiceItem,
+    };
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe('deleteInvoiceItem()', () => {
+  test('should return the corresponding action', () => {
+    const id: string = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
+
+    const actual = deleteInvoiceItem(id);
+    const expected: ActionCreator<string> = {
+      type: ActionTypeEnums.DeleteInvoiceItem,
+      payload: id,
+    };
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe('setInvoiceItemQuantity()', () => {
+  test('should return the corresponding action', () => {
+    const id: string = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
+    const quantity: number = 9108285;
+
+    const actual = setInvoiceItemQuantity(id, quantity);
+    const expected: ActionCreator<InvoiceItemQuantityPayload> = {
+      type: ActionTypeEnums.SetInvoiceItemQuantity,
+      payload: { id, quantity } as InvoiceItemQuantityPayload,
+    };
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe('setInvoiceItemDescription()', () => {
+  test('should return the corresponding action', () => {
+    const id: string = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
+    const description: string = 'Donuts';
+
+    const actual = setInvoiceItemDescription(id, description);
+    const expected: ActionCreator<InvoiceItemDescriptionPayload> = {
+      type: ActionTypeEnums.SetInvoiceItemDescription,
+      payload: { id, description } as InvoiceItemDescriptionPayload,
+    };
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe('setInvoiceItemUnitPrice()', () => {
+  test('should return the corresponding action', () => {
+    const id: string = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
+    const unitPrice: number = 3636123;
+
+    const actual = setInvoiceItemUnitPrice(id, unitPrice);
+    const expected: ActionCreator<InvoiceItemUnitPricePayload> = {
+      type: ActionTypeEnums.SetInvoiceItemUnitPrice,
+      payload: { id, unitPrice } as InvoiceItemUnitPricePayload,
     };
 
     expect(actual).toEqual(expected);

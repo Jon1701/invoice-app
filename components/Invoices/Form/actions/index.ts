@@ -1,9 +1,4 @@
-import {
-  Invoice,
-  InvoiceStatus,
-  Currency,
-  WithEmptyString,
-} from '@appTypes/index';
+import { Invoice, InvoiceItem, InvoiceStatus, Currency } from '@appTypes/index';
 
 /**
  * Action types associated with a reducer.
@@ -28,14 +23,43 @@ export enum ActionTypeEnums {
   SetClientAddressState = 'SET_CLIENT_ADDRESS_STATE',
   SetClientAddressPostalCode = 'SET_CLIENT_ADDRESS_POSTAL_CODE',
   SetClientAddressCountry = 'SET_CLIENT_ADDRESS_COUNTRY',
+  AddBlankInvoiceItem = 'ADD_BLANK_INVOICE_ITEM',
+  DeleteInvoiceItem = 'DELETE_INVOICE_ITEM',
+  SetInvoiceItemQuantity = 'SET_INVOICE_ITEM_QUANTITY',
+  SetInvoiceItemDescription = 'SET_INVOICE_ITEM_DESCRIPTION',
+  SetInvoiceItemUnitPrice = 'SET_INVOICE_ITEM_UNIT_PRICE',
 }
 
 /**
  * Structure of an Action Creator.
  */
-export interface ActionCreator<PayloadType> {
+export interface ActionCreator<PayloadType = void> {
   type: ActionTypeEnums;
-  payload: PayloadType;
+  payload?: PayloadType;
+}
+
+/**
+ * Payload structure for Invoice Item quantity.
+ */
+export interface InvoiceItemQuantityPayload {
+  id: string;
+  quantity: number;
+}
+
+/**
+ * Payload structure for Invoice Item description.
+ */
+export interface InvoiceItemDescriptionPayload {
+  id: string;
+  description: string;
+}
+
+/**
+ * Payload structure for Invoice Item unit price.
+ */
+export interface InvoiceItemUnitPricePayload {
+  id: string;
+  unitPrice: number;
 }
 
 /**
@@ -53,9 +77,7 @@ export const setInvoice = (payload: Invoice): ActionCreator<Invoice> => ({
  *
  * @param payload Currency Code.
  */
-export const setCurrency = (
-  payload: WithEmptyString<Currency>
-): ActionCreator<WithEmptyString<Currency>> => ({
+export const setCurrency = (payload: Currency): ActionCreator<Currency> => ({
   type: ActionTypeEnums.SetCurrency,
   payload,
 });
@@ -66,8 +88,8 @@ export const setCurrency = (
  * @param payload Invoice Status.
  */
 export const setInvoiceStatus = (
-  payload: WithEmptyString<InvoiceStatus>
-): ActionCreator<WithEmptyString<InvoiceStatus>> => ({
+  payload: InvoiceStatus
+): ActionCreator<InvoiceStatus> => ({
   type: ActionTypeEnums.SetInvoiceStatus,
   payload,
 });
@@ -256,9 +278,67 @@ export const setClientAddressCountry = (
   payload,
 });
 
+/**
+ * Adds a new blank Invoice Item to the Invoice.
+ */
+export const addBlankInvoiceItem = (): ActionCreator<void> => ({
+  type: ActionTypeEnums.AddBlankInvoiceItem,
+});
+
+/**
+ * Deletes an Invoice Item from the Invoice.
+ */
+export const deleteInvoiceItem = (
+  invoiceID: string
+): ActionCreator<string> => ({
+  type: ActionTypeEnums.DeleteInvoiceItem,
+  payload: invoiceID,
+});
+
+/**
+ * Sets the Quantity field of an Invoice Item.
+ */
+export const setInvoiceItemQuantity = (
+  id: string,
+  quantity: number
+): ActionCreator<InvoiceItemQuantityPayload> => ({
+  type: ActionTypeEnums.SetInvoiceItemQuantity,
+  payload: { id, quantity } as InvoiceItemQuantityPayload,
+});
+
+/**
+ * Sets the Description field of an Invoice Item.
+ */
+export const setInvoiceItemDescription = (
+  id: string,
+  description: string
+): ActionCreator<InvoiceItemDescriptionPayload> => ({
+  type: ActionTypeEnums.SetInvoiceItemDescription,
+  payload: {
+    id,
+    description,
+  } as InvoiceItemDescriptionPayload,
+});
+
+/**
+ * Sets the Unit Price field of an Invoice Item.
+ */
+export const setInvoiceItemUnitPrice = (
+  id: string,
+  unitPrice: number
+): ActionCreator<InvoiceItemUnitPricePayload> => ({
+  type: ActionTypeEnums.SetInvoiceItemUnitPrice,
+  payload: { id, unitPrice } as InvoiceItemUnitPricePayload,
+});
+
 export type Action =
+  | ActionCreator<void>
   | ActionCreator<number>
   | ActionCreator<string>
   | ActionCreator<Invoice>
-  | ActionCreator<WithEmptyString<Currency>>
-  | ActionCreator<WithEmptyString<InvoiceStatus>>;
+  | ActionCreator<Currency>
+  | ActionCreator<InvoiceStatus>
+  | ActionCreator<InvoiceItem>
+  | ActionCreator<InvoiceItemQuantityPayload>
+  | ActionCreator<InvoiceItemDescriptionPayload>
+  | ActionCreator<InvoiceItemUnitPricePayload>;

@@ -7,17 +7,23 @@ import {
   InvoiceStatus,
   Currency,
   InvoiceAmounts,
-  WithEmptyString,
+  InvoiceItem,
 } from '@appTypes/index';
+import {
+  Action,
+  ActionTypeEnums,
+  InvoiceItemDescriptionPayload,
+  InvoiceItemQuantityPayload,
+  InvoiceItemUnitPricePayload,
+} from '@components/Invoices/Form';
 import deepClone from '@utils/deepClone';
-
-import { Action, ActionTypeEnums } from '../actions';
+import generateUUID, { UUIDTypeEnums } from '@utils/generateUUID';
 
 // Blank Invoice.
 export const blankInvoice: Invoice = {
   id: '',
-  status: '',
-  currency: '',
+  status: InvoiceStatus.Draft,
+  currency: Currency.USD,
   amount: { total: 0 } as InvoiceAmounts,
   biller: {
     name: '',
@@ -42,6 +48,14 @@ export const blankInvoice: Invoice = {
       country: '',
     },
   } as Address & ContactInfo,
+  items: [],
+};
+
+// Blank Invoice Item.
+export const blankInvoiceItem: InvoiceItem = {
+  description: '',
+  quantity: 0,
+  unitPrice: 0,
 };
 
 /**
@@ -62,11 +76,11 @@ export const invoiceReducer = (state: Invoice, action: Action): Invoice => {
 
   switch (action.type) {
     case ActionTypeEnums.SetCurrency:
-      copy.currency = action.payload as WithEmptyString<Currency>;
+      copy.currency = action.payload as Currency;
       break;
 
     case ActionTypeEnums.SetInvoiceStatus:
-      copy.status = action.payload as WithEmptyString<InvoiceStatus>;
+      copy.status = action.payload as InvoiceStatus;
       break;
 
     case ActionTypeEnums.SetBillerName:
@@ -131,6 +145,123 @@ export const invoiceReducer = (state: Invoice, action: Action): Invoice => {
 
     case ActionTypeEnums.SetClientAddressCountry:
       copy.client.address.country = action.payload as string;
+      break;
+
+    case ActionTypeEnums.AddBlankInvoiceItem:
+      {
+        // Create a copy of the array of Invoice Items.
+        const itemsCopy: Array<InvoiceItem> = copy.items.slice();
+
+        // Add new Invoice Item to the copy of Invoice Items.
+        const item = deepClone(blankInvoiceItem);
+        item.id = generateUUID(UUIDTypeEnums.InvoiceItem);
+        itemsCopy.push(blankInvoiceItem);
+
+        // Replace old array with new one.
+        copy.items = itemsCopy;
+      }
+      break;
+
+    case ActionTypeEnums.DeleteInvoiceItem:
+      {
+        // Find the index of the Invoice Item in the array of Invoice items.
+        const matchingIndex = copy.items.findIndex(
+          (item: InvoiceItem) => item.id === (action.payload as string)
+        );
+
+        // If no matching Invoice Item could be found, then do not modify array.
+        if (matchingIndex < 0) {
+          break;
+        }
+
+        // Create a copy of the array of Invoice Items.
+        const itemsCopy: Array<InvoiceItem> = copy.items.slice();
+
+        // Delete Invoice Item from array copy.
+        itemsCopy.splice(matchingIndex, 1);
+
+        // Replace old array with new one.
+        copy.items = itemsCopy;
+      }
+      break;
+
+    case ActionTypeEnums.SetInvoiceItemQuantity:
+      {
+        // Add typeguarding to payload variables.
+        const { id, quantity } = action.payload as InvoiceItemQuantityPayload;
+
+        // Find the index of the Invoice Item in the array of Invoice items.
+        const matchingIndex = copy.items.findIndex(
+          (item: InvoiceItem) => item.id === id
+        );
+
+        // If no matching Invoice Item could be found, then do not modify array.
+        if (matchingIndex < 0) {
+          break;
+        }
+
+        // Create a copy of the array of Invoice Items.
+        const itemsCopy: Array<InvoiceItem> = copy.items.slice();
+
+        // Update quantity.
+        itemsCopy[matchingIndex].quantity = quantity;
+
+        // Replace old array with new one.
+        copy.items = itemsCopy;
+      }
+      break;
+
+    case ActionTypeEnums.SetInvoiceItemDescription:
+      {
+        // Add typeguarding to payload variables.
+        const { id, description } =
+          action.payload as InvoiceItemDescriptionPayload;
+
+        // Find the index of the Invoice Item in the array of Invoice items.
+        const matchingIndex = copy.items.findIndex(
+          (item: InvoiceItem) => item.id === id
+        );
+
+        // If no matching Invoice Item could be found, then do not modify array.
+        if (matchingIndex < 0) {
+          break;
+        }
+
+        // Create a copy of the array of Invoice Items.
+        const itemsCopy: Array<InvoiceItem> = copy.items.slice();
+
+        // Update quantity.
+        itemsCopy[matchingIndex].description = description;
+
+        // Replace old array with new one.
+        copy.items = itemsCopy;
+      }
+      break;
+
+    case ActionTypeEnums.SetInvoiceItemUnitPrice:
+      {
+        // Add typeguarding to payload variables.
+        const { id, unitPrice } = action.payload as InvoiceItemUnitPricePayload;
+
+        // Find the index of the Invoice Item in the array of Invoice items.
+        const matchingIndex = copy.items.findIndex(
+          (item: InvoiceItem) => item.id === id
+        );
+
+        // If no matching Invoice Item could be found, then do not modify array.
+        if (matchingIndex < 0) {
+          break;
+        }
+
+        // Create a copy of the array of Invoice Items.
+        const itemsCopy: Array<InvoiceItem> = copy.items.slice();
+
+        // Update quantity.
+        itemsCopy[matchingIndex].unitPrice = unitPrice;
+
+        // Replace old array with new one.
+        copy.items = itemsCopy;
+      }
       break;
 
     default:

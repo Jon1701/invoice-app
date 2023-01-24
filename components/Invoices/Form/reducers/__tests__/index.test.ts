@@ -1,5 +1,8 @@
 import { describe, expect, test } from '@jest/globals';
 
+import { sampleInvoices } from '@sampleData/Invoices';
+import { Currency, Invoice, InvoiceStatus, InvoiceItem } from '@appTypes/index';
+import deepClone from '@utils/deepClone';
 import {
   setInvoice,
   setCurrency,
@@ -20,20 +23,19 @@ import {
   setClientAddressState,
   setClientAddressPostalCode,
   setClientAddressCountry,
-  addNewInvoiceItem,
+  addBlankInvoiceItem,
   deleteInvoiceItem,
+  setInvoiceItemQuantity,
+  setInvoiceItemDescription,
+  setInvoiceItemUnitPrice,
   ActionCreator,
+  InvoiceItemQuantityPayload,
+  InvoiceItemDescriptionPayload,
+  InvoiceItemUnitPricePayload,
+  invoiceReducer,
+  blankInvoice,
+  blankInvoiceItem,
 } from '@components/Invoices/Form';
-import { sampleInvoices } from '@sampleData/Invoices';
-import {
-  Currency,
-  Invoice,
-  InvoiceStatus,
-  WithEmptyString,
-} from '@appTypes/index';
-import deepClone from '@utils/deepClone';
-
-import { invoiceReducer, blankInvoice } from '..';
 
 describe('invoiceReducer()', () => {
   describe('with the setInvoice() action', () => {
@@ -76,8 +78,7 @@ describe('invoiceReducer()', () => {
         expected.currency = currency;
 
         // Modify Currency using Action.
-        const payload: ActionCreator<WithEmptyString<Currency>> =
-          setCurrency(currency);
+        const payload: ActionCreator<Currency> = setCurrency(currency);
         const actual: Invoice = invoiceReducer(initialState, payload);
 
         // Check if Invoices match.
@@ -96,8 +97,7 @@ describe('invoiceReducer()', () => {
         expected.currency = currency;
 
         // Modify Currency using Action.
-        const payload: ActionCreator<WithEmptyString<Currency>> =
-          setCurrency(currency);
+        const payload: ActionCreator<Currency> = setCurrency(currency);
         const actual: Invoice = invoiceReducer(initialState, payload);
 
         // Check if Invoices match.
@@ -118,8 +118,7 @@ describe('invoiceReducer()', () => {
         expected.status = status;
 
         // Modify Invoice Status using Action.
-        const payload: ActionCreator<WithEmptyString<InvoiceStatus>> =
-          setInvoiceStatus(status);
+        const payload: ActionCreator<InvoiceStatus> = setInvoiceStatus(status);
         const actual: Invoice = invoiceReducer(initialState, payload);
 
         // Check if the Invoices match.
@@ -138,8 +137,7 @@ describe('invoiceReducer()', () => {
         expected.status = status;
 
         // Modify Invoice Status using Action.
-        const payload: ActionCreator<WithEmptyString<InvoiceStatus>> =
-          setInvoiceStatus(status);
+        const payload: ActionCreator<InvoiceStatus> = setInvoiceStatus(status);
         const actual: Invoice = invoiceReducer(initialState, payload);
 
         // Check if Invoices match.
@@ -788,6 +786,303 @@ describe('invoiceReducer()', () => {
 
         // Check if Invoices match.
         expect(actual).toEqual(expected);
+      });
+    });
+  });
+
+  describe('with the addBlankInvoiceItem() action', () => {
+    describe('with existing state', () => {
+      const initialState: Invoice = deepClone(sampleInvoices[0]);
+
+      test('should return the Invoice with a new, blank Invoice Item', () => {
+        // Manually add the new Item.
+        const expected: Invoice = deepClone(sampleInvoices[0]);
+        expected.items = expected.items.concat([deepClone(blankInvoiceItem)]);
+
+        // Modify Items using Action.
+        const payload: ActionCreator<void> = addBlankInvoiceItem();
+        const actual: Invoice = invoiceReducer(initialState, payload);
+
+        // Check if Invoices match.
+        expect(actual).toEqual(expected);
+      });
+    });
+
+    describe('with blank state', () => {
+      const initialState: Invoice = deepClone(blankInvoice);
+
+      test('should return the Invoice with a new, blank Invoice Item', () => {
+        // Manually add the new Item.
+        const expected: Invoice = deepClone(initialState);
+        expected.items = [deepClone(blankInvoiceItem)];
+
+        // Modify Items using Action.
+        const payload: ActionCreator<void> = addBlankInvoiceItem();
+        const actual: Invoice = invoiceReducer(initialState, payload);
+
+        // Check if Invoices match.
+        expect(actual).toEqual(expected);
+      });
+    });
+  });
+
+  describe('with the deleteInvoiceItem() action', () => {
+    describe('with existing state', () => {
+      const initialState: Invoice = deepClone(sampleInvoices[1]);
+
+      describe('with a known Invoice Item ID', () => {
+        // Invoice Item ID (located at end of array).
+        const invoiceItemID =
+          sampleInvoices[1].items[sampleInvoices[1].items.length - 1].id;
+
+        test('should return the Invoice without the matching Invoice Item', () => {
+          // Manually remove the last item in the array.
+          const expected: Invoice = deepClone(initialState);
+          expected.items = expected.items.slice(0, expected.items.length - 1);
+
+          // Modify Items using Action.
+          const payload: ActionCreator<string> = deleteInvoiceItem(
+            invoiceItemID as string
+          );
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
+      });
+
+      describe('with an unknown Invoice Item ID', () => {
+        const invoiceItemID = 'invoiceitem_6a43fb6450174768852054f105dda2a5';
+
+        test('should not delete any Invoice Items from the array', () => {
+          const expected: Invoice = deepClone(initialState);
+
+          // Delete matching Invoice Item by ID.
+          const payload: ActionCreator<string> =
+            deleteInvoiceItem(invoiceItemID);
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
+      });
+    });
+
+    describe('with blank state', () => {
+      const initialState: Invoice = deepClone(blankInvoice);
+
+      describe('with an unknown Invoice Item ID', () => {
+        const invoiceItemID = 'invoiceitem_6a43fb6450174768852054f105dda2a5';
+
+        test('should not delete any Invoice Items from the array', () => {
+          const expected: Invoice = deepClone(initialState);
+
+          // Delete matching Invoice Item by ID.
+          const payload: ActionCreator<string> =
+            deleteInvoiceItem(invoiceItemID);
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
+      });
+    });
+  });
+
+  describe('with the setInvoiceItemQuantity() action', () => {
+    describe('with existing state', () => {
+      const initialState: Invoice = deepClone(sampleInvoices[0]);
+
+      describe('with a known Invoice Item ID', () => {
+        const invoiceItemID = initialState.items[0].id;
+
+        test('should return the Invoice with the quantity modified', () => {
+          const quantity = 9001;
+
+          // Manually set the quantity.
+          const expected: Invoice = deepClone(initialState);
+          expected.items[0].quantity = quantity;
+
+          // Modify Items using Action.
+          const payload: ActionCreator<InvoiceItemQuantityPayload> =
+            setInvoiceItemQuantity(invoiceItemID as string, quantity);
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
+      });
+
+      describe('with an unknown Invoice Item ID', () => {
+        const invoiceItemID = 'invoiceitem_5d6ad4de46c74947801f1ae7a87b5d92';
+
+        test('should return the Invoice with the quantity unmodified', () => {
+          const quantity = 9001;
+
+          const expected: Invoice = deepClone(initialState);
+
+          // Modify Items using Action.
+          const payload: ActionCreator<InvoiceItemQuantityPayload> =
+            setInvoiceItemQuantity(invoiceItemID as string, quantity);
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
+      });
+    });
+
+    describe('with blank state', () => {
+      const initialState: Invoice = deepClone(blankInvoice);
+
+      describe('with an unknown Invoice Item ID', () => {
+        const invoiceItemID = 'invoiceitem_5d6ad4de46c74947801f1ae7a87b5d92';
+
+        test('should return the Invoice with the quantity unmodified', () => {
+          const quantity = 9001;
+
+          const expected: Invoice = deepClone(initialState);
+
+          // Modify Items using Action.
+          const payload: ActionCreator<InvoiceItemQuantityPayload> =
+            setInvoiceItemQuantity(invoiceItemID as string, quantity);
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
+      });
+    });
+  });
+
+  describe('with the setInvoiceItemDescription() action', () => {
+    describe('with existing state', () => {
+      const initialState: Invoice = deepClone(sampleInvoices[0]);
+
+      describe('with a known Invoice Item ID', () => {
+        const invoiceItemID = initialState.items[0].id;
+
+        test('should return the Invoice with the description modified', () => {
+          const description = 'Jelly Donut';
+
+          // Manually set the description.
+          const expected: Invoice = deepClone(initialState);
+          expected.items[0].description = description;
+
+          // Modify Items using Action.
+          const payload: ActionCreator<InvoiceItemDescriptionPayload> =
+            setInvoiceItemDescription(invoiceItemID as string, description);
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
+      });
+
+      describe('with an unknown Invoice Item ID', () => {
+        const invoiceItemID = 'invoiceitem_5d6ad4de46c74947801f1ae7a87b5d92';
+
+        test('should return the Invoice with the description unmodified', () => {
+          const description = 'Jelly Donut';
+
+          const expected: Invoice = deepClone(initialState);
+
+          // Modify Items using Action.
+          const payload: ActionCreator<InvoiceItemDescriptionPayload> =
+            setInvoiceItemDescription(invoiceItemID as string, description);
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
+      });
+    });
+
+    describe('with blank state', () => {
+      const initialState: Invoice = deepClone(blankInvoice);
+
+      describe('with an unknown Invoice Item ID', () => {
+        const invoiceItemID = 'invoiceitem_5d6ad4de46c74947801f1ae7a87b5d92';
+
+        test('should return the Invoice with the description unmodified', () => {
+          const description = 'Jelly Donut';
+
+          const expected: Invoice = deepClone(initialState);
+
+          // Modify Items using Action.
+          const payload: ActionCreator<InvoiceItemDescriptionPayload> =
+            setInvoiceItemDescription(invoiceItemID as string, description);
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
+      });
+    });
+  });
+
+  describe('with the setInvoiceItemUnitPrice() action', () => {
+    describe('with existing state', () => {
+      const initialState: Invoice = deepClone(sampleInvoices[1]);
+
+      describe('with a known Invoice Item ID', () => {
+        const invoiceItemID = initialState.items[1].id;
+
+        test('should return the Invoice with the unit price modified', () => {
+          const unitPrice = 19285.1;
+
+          // Manually set the unit price.
+          const expected: Invoice = deepClone(initialState);
+          expected.items[1].unitPrice = unitPrice;
+
+          // Modify Items using Action.
+          const payload: ActionCreator<InvoiceItemUnitPricePayload> =
+            setInvoiceItemUnitPrice(invoiceItemID as string, unitPrice);
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
+      });
+
+      describe('with an unknown Invoice Item ID', () => {
+        const invoiceItemID = 'invoiceitem_5d6ad4de46c74947801f1ae7a87b5d92';
+
+        test('should return the Invoice with the description unmodified', () => {
+          const unitPrice = 328306182;
+
+          const expected: Invoice = deepClone(initialState);
+
+          // Modify Items using Action.
+          const payload: ActionCreator<InvoiceItemUnitPricePayload> =
+            setInvoiceItemUnitPrice(invoiceItemID as string, unitPrice);
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
+      });
+    });
+
+    describe('with blank state', () => {
+      const initialState: Invoice = deepClone(blankInvoice);
+
+      describe('with an unknown Invoice Item ID', () => {
+        const invoiceItemID = 'invoiceitem_5d6ad4de46c74947801f1ae7a87b5d92';
+
+        test('should return the Invoice with the unit price unmodified', () => {
+          const unitPrice = 124890;
+
+          const expected: Invoice = deepClone(initialState);
+
+          // Modify Items using Action.
+          const payload: ActionCreator<InvoiceItemUnitPricePayload> =
+            setInvoiceItemUnitPrice(invoiceItemID as string, unitPrice);
+          const actual: Invoice = invoiceReducer(initialState, payload);
+
+          // Check if Invoices match.
+          expect(actual).toEqual(expected);
+        });
       });
     });
   });

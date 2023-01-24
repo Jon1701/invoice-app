@@ -32,13 +32,24 @@ const originalData: Array<Invoice> = [
       },
     },
     items: [
-      { description: 'Self Sealing Stem Bolt', unitPrice: 36.18, quantity: 5 },
       {
+        id: 'invoiceitem_1a881a28d41345059705ea73209a3447',
+        description: 'Self Sealing Stem Bolt',
+        unitPrice: 36.18,
+        quantity: 5,
+      },
+      {
+        id: 'invoiceitem_68450b8e-8276-4dc7-b720-91b07fadec85',
         description: 'Reverse Ratcheting Router',
         unitPrice: 4.32,
         quantity: 10,
       },
-      { description: 'Gold-pressed Latinum', unitPrice: 12.36, quantity: 88 },
+      {
+        id: 'invoiceitem_60e546e905b2422ba945ca7911fe7f50',
+        description: 'Gold-pressed Latinum',
+        unitPrice: 12.36,
+        quantity: 88,
+      },
       { description: 'Plasma Conduit', unitPrice: 9102, quantity: 84 },
     ],
   },
@@ -71,9 +82,24 @@ const originalData: Array<Invoice> = [
       },
     },
     items: [
-      { description: 'Tricorder', unitPrice: 3617.12, quantity: 277 },
-      { description: 'Medical Tricorder', unitPrice: 5.84, quantity: 3693 },
-      { description: 'Tribble', unitPrice: 7.9, quantity: 363 },
+      {
+        id: 'invoiceitem_0422e201d4514d1b912ba74ef3860e14',
+        description: 'Tricorder',
+        unitPrice: 3617.12,
+        quantity: 277,
+      },
+      {
+        id: 'invoiceitem_8bf64b9dafb94a3a9b2ed741c1e64cfe',
+        description: 'Medical Tricorder',
+        unitPrice: 5.84,
+        quantity: 3693,
+      },
+      {
+        id: 'invoiceitem_6b2ec443bdde405eb735e2cbee65a361',
+        description: 'Tribble',
+        unitPrice: 7.9,
+        quantity: 363,
+      },
     ],
   },
   {
@@ -103,7 +129,14 @@ const originalData: Array<Invoice> = [
         country: 'Canada',
       },
     },
-    items: [{ description: 'Hull Plate', unitPrice: 5851674, quantity: 50 }],
+    items: [
+      {
+        id: 'invoiceitem_a43047d100d8459198fbfb59bdfd9f8e',
+        description: 'Hull Plate',
+        unitPrice: 5851674,
+        quantity: 50,
+      },
+    ],
   },
   {
     id: '4',

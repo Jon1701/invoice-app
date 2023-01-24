@@ -1,9 +1,4 @@
 /**
- * Union of an existing type and an empty string.
- */
-export type WithEmptyString<Type> = Type | '';
-
-/**
  * All Invoice Statuses.
  */
 export enum InvoiceStatus {
@@ -92,6 +87,31 @@ export interface InvoiceAmounts {
 }
 
 /**
+ * An Item in an Invoice.
+ */
+export interface InvoiceItem {
+  /**
+   * Unique identifier.
+   */
+  id?: string;
+
+  /**
+   * Item Description.
+   */
+  description: string;
+
+  /**
+   * Unit Price.
+   */
+  unitPrice: number;
+
+  /**
+   * Quantity.
+   */
+  quantity: number;
+}
+
+/**
  * Invoice.
  */
 export interface Invoice {
@@ -108,12 +128,17 @@ export interface Invoice {
   /**
    * Currency code.
    */
-  currency: WithEmptyString<Currency>;
+  currency: Currency;
 
   /**
    * Status.
    */
-  status: WithEmptyString<InvoiceStatus>;
+  status: InvoiceStatus;
+
+  /**
+   * Invoice items.
+   */
+  items: Array<InvoiceItem>;
 
   /**
    * Biller information.
