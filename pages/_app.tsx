@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app';
 import GlobalStyle from '@components/GlobalStyle';
 import React from 'react';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };

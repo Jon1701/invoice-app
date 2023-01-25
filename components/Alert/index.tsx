@@ -9,7 +9,6 @@ import {
   faCircleCheck,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 interface BaseStyledAlertProps {
   /**

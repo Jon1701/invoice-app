@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals';
 
 import { sampleInvoices } from '@sampleData/Invoices';
-import { Currency, Invoice, InvoiceStatus, InvoiceItem } from '@appTypes/index';
+import { Currency, Invoice, InvoiceStatus } from '@appTypes/index';
 import deepClone from '@utils/deepClone';
 import {
   setInvoice,

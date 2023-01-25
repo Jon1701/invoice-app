@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Invoice, InvoiceItem } from '@appTypes/index';
+import { Invoice } from '@appTypes/index';
 
 import { DisplayFormattedCurrency } from '@components/Currency';
 import { StatusIndicator } from '@components/Invoices/StatusIndicator';

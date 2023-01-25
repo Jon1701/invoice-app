@@ -2,13 +2,16 @@ import React from 'react';
 import { describe, test } from '@jest/globals';
 import { render } from '@testing-library/react';
 
-import { Alert, AlertProps, AlertTypes } from '..';
+import { Alert, AlertTypes } from '..';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const stubFunc = () => {};
 
 const propCombinations = {
   showSymbol: [true, false],
   alertType: Object.values(AlertTypes),
   showSpaceBelow: [true, false],
-  handleCloseButtonClick: [() => {}, undefined],
+  handleCloseButtonClick: [stubFunc, undefined],
 };
 
 describe('Testing all permutations of props for <Alert />', () => {

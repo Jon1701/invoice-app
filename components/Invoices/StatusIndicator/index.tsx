@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 
-import { Invoice, InvoiceStatus } from '@appTypes/index';
+import { InvoiceStatus } from '@appTypes/index';
 import displayStatus from '@utils/invoices/displayStatus';
 
 /**

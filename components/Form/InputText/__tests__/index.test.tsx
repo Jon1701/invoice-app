@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 
 import InputText from '..';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 const stubFunc = () => {};
 
 const propCombinations = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { SolidButton, HollowButton } from '.';
+import { SolidButton } from '.';
 
 export default {
   component: SolidButton,

@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import useGetInvoices, {
   ReturnPayload,
   HookStatus,
 } from '@hooks/useGetInvoices';
-import { Alert, AlertTypes } from '@components/Alert';
-import { breakpoints } from '@utils/breakpoints';
-import { Invoice } from '@appTypes/index';
 import Layout from '@layouts/IndexPage';
 import ListInvoicesTable from '@components/Invoices/ListInvoicesTable';
 import Loading from '@components/Loading';
-import NavigationBar from '@components/NavigationBar';
 
 import { NextPageWithLayout } from './_app';
 

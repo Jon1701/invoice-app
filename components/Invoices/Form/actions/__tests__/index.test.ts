@@ -1,10 +1,9 @@
-import { Currency, Invoice, InvoiceStatus, InvoiceItem } from '@appTypes/index';
+import { Currency, Invoice, InvoiceStatus } from '@appTypes/index';
 import { describe, expect, test } from '@jest/globals';
 
 import { sampleInvoices } from '@sampleData/Invoices';
 
 import {
-  Action,
   ActionCreator,
   ActionTypeEnums,
   setInvoice,
@@ -80,7 +79,7 @@ describe('setInvoiceStatus()', () => {
 
 describe('setBillerName()', () => {
   test('should return the corresponding action', () => {
-    const name: string = 'Hoshi Sato';
+    const name = 'Hoshi Sato';
 
     const actual = setBillerName(name);
     const expected: ActionCreator<string> = {
@@ -94,7 +93,7 @@ describe('setBillerName()', () => {
 
 describe('setBillerEmail()', () => {
   test('should return the corresponding action', () => {
-    const email: string = 'hello@world.com';
+    const email = 'hello@world.com';
 
     const actual = setBillerEmail(email);
     const expected: ActionCreator<string> = {
@@ -108,7 +107,7 @@ describe('setBillerEmail()', () => {
 
 describe('setBillerAddressLine1()', () => {
   test('should return the corresponding action', () => {
-    const line1: string = '73811 Sovereign Crescent';
+    const line1 = '73811 Sovereign Crescent';
 
     const actual = setBillerAddressLine1(line1);
     const expected: ActionCreator<string> = {
@@ -122,7 +121,7 @@ describe('setBillerAddressLine1()', () => {
 
 describe('setBillerAddressLine2()', () => {
   test('should return the corresponding action', () => {
-    const line2: string = 'Deck 10 - Forward Section';
+    const line2 = 'Deck 10 - Forward Section';
 
     const actual = setBillerAddressLine2(line2);
     const expected: ActionCreator<string> = {
@@ -136,7 +135,7 @@ describe('setBillerAddressLine2()', () => {
 
 describe('setBillerAddressCity()', () => {
   test('should return the corresponding action', () => {
-    const city: string = 'Nagoya';
+    const city = 'Nagoya';
 
     const actual = setBillerAddressCity(city);
     const expected: ActionCreator<string> = {
@@ -150,7 +149,7 @@ describe('setBillerAddressCity()', () => {
 
 describe('setBillerAddressState()', () => {
   test('should return the corresponding action', () => {
-    const state: string = 'Fukuoka';
+    const state = 'Fukuoka';
 
     const actual = setBillerAddressState(state);
     const expected: ActionCreator<string> = {
@@ -164,7 +163,7 @@ describe('setBillerAddressState()', () => {
 
 describe('setBillerAddressPostalCode()', () => {
   test('should return the corresponding action', () => {
-    const postalCode: string = '182-1902';
+    const postalCode = '182-1902';
 
     const actual = setBillerAddressPostalCode(postalCode);
     const expected: ActionCreator<string> = {
@@ -178,7 +177,7 @@ describe('setBillerAddressPostalCode()', () => {
 
 describe('setBillerAddressCountry()', () => {
   test('should return the corresponding action', () => {
-    const country: string = 'Taiwan';
+    const country = 'Taiwan';
 
     const actual = setBillerAddressCountry(country);
     const expected: ActionCreator<string> = {
@@ -192,7 +191,7 @@ describe('setBillerAddressCountry()', () => {
 
 describe('setClientName()', () => {
   test('should return the corresponding action', () => {
-    const name: string = 'Empress Sato';
+    const name = 'Empress Sato';
 
     const actual = setClientName(name);
     const expected: ActionCreator<string> = {
@@ -206,7 +205,7 @@ describe('setClientName()', () => {
 
 describe('setClientEmail()', () => {
   test('should return the corresponding action', () => {
-    const email: string = 'example@domain.com';
+    const email = 'example@domain.com';
 
     const actual = setClientEmail(email);
     const expected: ActionCreator<string> = {
@@ -220,7 +219,7 @@ describe('setClientEmail()', () => {
 
 describe('setClientAddressLine1()', () => {
   test('should return the corresponding action', () => {
-    const line1: string = '59650 Prometheus Avenue';
+    const line1 = '59650 Prometheus Avenue';
 
     const actual = setClientAddressLine1(line1);
     const expected: ActionCreator<string> = {
@@ -234,7 +233,7 @@ describe('setClientAddressLine1()', () => {
 
 describe('setClientAddressLine2()', () => {
   test('should return the corresponding action', () => {
-    const line2: string = 'Deck 73';
+    const line2 = 'Deck 73';
 
     const actual = setClientAddressLine2(line2);
     const expected: ActionCreator<string> = {
@@ -248,7 +247,7 @@ describe('setClientAddressLine2()', () => {
 
 describe('setClientAddressCity()', () => {
   test('should return the corresponding action', () => {
-    const city: string = 'Taichung City';
+    const city = 'Taichung City';
 
     const actual = setClientAddressCity(city);
     const expected: ActionCreator<string> = {
@@ -262,7 +261,7 @@ describe('setClientAddressCity()', () => {
 
 describe('setClientAddressState()', () => {
   test('should return the corresponding action', () => {
-    const state: string = '臺灣省';
+    const state = '臺灣省';
 
     const actual = setClientAddressState(state);
     const expected: ActionCreator<string> = {
@@ -276,7 +275,7 @@ describe('setClientAddressState()', () => {
 
 describe('setClientAddressPostalCode()', () => {
   test('should return the corresponding action', () => {
-    const postalCode: string = '0123456789';
+    const postalCode = '0123456789';
 
     const actual = setClientAddressPostalCode(postalCode);
     const expected: ActionCreator<string> = {
@@ -290,7 +289,7 @@ describe('setClientAddressPostalCode()', () => {
 
 describe('setClientAddressCountry()', () => {
   test('should return the corresponding action', () => {
-    const country: string = 'Japan';
+    const country = 'Japan';
 
     const actual = setClientAddressCountry(country);
     const expected: ActionCreator<string> = {
@@ -304,12 +303,6 @@ describe('setClientAddressCountry()', () => {
 
 describe('addBlankInvoiceItem()', () => {
   test('should return the corresponding action', () => {
-    const invoiceItem: InvoiceItem = {
-      description: 'Self-sealing Stem Bolt',
-      quantity: 1701,
-      unitPrice: 100,
-    };
-
     const actual = addBlankInvoiceItem();
     const expected: ActionCreator<void> = {
       type: ActionTypeEnums.AddBlankInvoiceItem,
@@ -321,7 +314,7 @@ describe('addBlankInvoiceItem()', () => {
 
 describe('deleteInvoiceItem()', () => {
   test('should return the corresponding action', () => {
-    const id: string = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
+    const id = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
 
     const actual = deleteInvoiceItem(id);
     const expected: ActionCreator<string> = {
@@ -335,8 +328,8 @@ describe('deleteInvoiceItem()', () => {
 
 describe('setInvoiceItemQuantity()', () => {
   test('should return the corresponding action', () => {
-    const id: string = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
-    const quantity: number = 9108285;
+    const id = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
+    const quantity = 9108285;
 
     const actual = setInvoiceItemQuantity(id, quantity);
     const expected: ActionCreator<InvoiceItemQuantityPayload> = {
@@ -350,8 +343,8 @@ describe('setInvoiceItemQuantity()', () => {
 
 describe('setInvoiceItemDescription()', () => {
   test('should return the corresponding action', () => {
-    const id: string = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
-    const description: string = 'Donuts';
+    const id = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
+    const description = 'Donuts';
 
     const actual = setInvoiceItemDescription(id, description);
     const expected: ActionCreator<InvoiceItemDescriptionPayload> = {
@@ -365,8 +358,8 @@ describe('setInvoiceItemDescription()', () => {
 
 describe('setInvoiceItemUnitPrice()', () => {
   test('should return the corresponding action', () => {
-    const id: string = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
-    const unitPrice: number = 3636123;
+    const id = 'invoiceitem_962dcd8b7dfd465792507a79bff07628';
+    const unitPrice = 3636123;
 
     const actual = setInvoiceItemUnitPrice(id, unitPrice);
     const expected: ActionCreator<InvoiceItemUnitPricePayload> = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
-import { getUnixTime, fromUnixTime } from 'date-fns';
+import { getUnixTime } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,7 +8,6 @@ import timestampToDate from '@utils/datetime/timestampToDate';
 
 import {
   Container,
-  ContainerProps,
   ContainerStyledInputButton,
   StyledInputButton,
   StyledInput,

@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import styled from 'styled-components';
 
 import InputText from '../InputText';
 import Label from '.';

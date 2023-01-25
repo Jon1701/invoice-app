@@ -1,5 +1,3 @@
-import React, { useState, useReducer, useCallback } from 'react';
-
 import {
   Invoice,
   Address,
@@ -72,7 +70,7 @@ export const invoiceReducer = (state: Invoice, action: Action): Invoice => {
   }
 
   // Create copy of existing state.
-  let copy: Invoice = deepClone(state);
+  const copy: Invoice = deepClone(state);
 
   switch (action.type) {
     case ActionTypeEnums.SetCurrency:

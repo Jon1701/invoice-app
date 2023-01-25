@@ -1,13 +1,12 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 export const errorMappings = {
   'with errors': ['this is an error'],
   'without errors': undefined,
 };
 
 export const args = {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleChange: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleClearButtonClick: () => {},
   disabled: false,
   readOnly: false,

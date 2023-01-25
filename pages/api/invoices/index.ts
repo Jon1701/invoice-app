@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Currency, Invoice, InvoiceStatus } from '@appTypes/index';
+import { Invoice } from '@appTypes/index';
 
 import { sampleInvoices } from '@sampleData/Invoices';
 

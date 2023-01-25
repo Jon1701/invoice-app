@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Currency, Invoice, InvoiceStatus } from '@appTypes/index';
 import { sampleInvoices } from '@sampleData/Invoices';
 
 import ListInvoicesTable from '.';
