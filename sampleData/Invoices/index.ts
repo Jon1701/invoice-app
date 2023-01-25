@@ -14,6 +14,7 @@ const originalData: Array<Invoice> = [
       email: 'jarcher@nx01.com',
       address: {
         line1: '01 Enterprise Avenue',
+        line2: "Captain's Quarters",
         city: 'San Francisco',
         state: 'California',
         postalCode: '12345',
@@ -63,6 +64,7 @@ const originalData: Array<Invoice> = [
       email: 'sulu.hikaru@excelsior.net',
       address: {
         line1: '2000 Excelsior Road',
+        line2: 'N/A',
         city: 'San Francisco',
         state: 'California',
         postalCode: '12856',
@@ -112,6 +114,7 @@ const originalData: Array<Invoice> = [
       email: 'jlp@stargazer.com',
       address: {
         line1: '2893 Stargazer Lane',
+        line2: 'Suite AC3A',
         city: 'Winnipeg',
         state: 'Manitoba',
         postalCode: 'K8B2V1',
