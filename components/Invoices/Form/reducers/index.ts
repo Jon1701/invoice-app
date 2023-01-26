@@ -153,7 +153,7 @@ export const invoiceReducer = (state: Invoice, action: Action): Invoice => {
         // Add new Invoice Item to the copy of Invoice Items.
         const item = deepClone(blankInvoiceItem);
         item.id = generateUUID(UUIDTypeEnums.InvoiceItem);
-        itemsCopy.push(blankInvoiceItem);
+        itemsCopy.push(item);
 
         // Replace old array with new one.
         copy.items = itemsCopy;

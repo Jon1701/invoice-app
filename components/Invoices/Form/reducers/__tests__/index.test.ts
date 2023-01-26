@@ -37,6 +37,18 @@ import {
   blankInvoiceItem,
 } from '@components/Invoices/Form';
 
+// Mock Invoice Item ID.
+const mockItemID = 'invoiceitem_766cf03610d4427696d3c5d71136bec6';
+
+jest.mock('@utils/generateUUID', () => {
+  const original = jest.requireActual('@utils/generateUUID');
+  return {
+    __esModule: true,
+    ...original,
+    default: jest.fn(() => mockItemID),
+  };
+});
+
 describe('invoiceReducer()', () => {
   describe('with the setInvoice() action', () => {
     describe('with existing state', () => {
@@ -795,9 +807,10 @@ describe('invoiceReducer()', () => {
       const initialState: Invoice = deepClone(sampleInvoices[0]);
 
       test('should return the Invoice with a new, blank Invoice Item', () => {
-        // Manually add the new Item.
+        const newItem = deepClone(blankInvoiceItem);
+        newItem.id = mockItemID;
         const expected: Invoice = deepClone(sampleInvoices[0]);
-        expected.items = expected.items.concat([deepClone(blankInvoiceItem)]);
+        expected.items = expected.items.concat([deepClone(newItem)]);
 
         // Modify Items using Action.
         const payload: ActionCreator<void> = addBlankInvoiceItem();
@@ -814,7 +827,9 @@ describe('invoiceReducer()', () => {
       test('should return the Invoice with a new, blank Invoice Item', () => {
         // Manually add the new Item.
         const expected: Invoice = deepClone(initialState);
-        expected.items = [deepClone(blankInvoiceItem)];
+        const newItem = deepClone(blankInvoiceItem);
+        newItem.id = mockItemID;
+        expected.items = [newItem];
 
         // Modify Items using Action.
         const payload: ActionCreator<void> = addBlankInvoiceItem();
