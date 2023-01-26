@@ -20,6 +20,7 @@ import {
   setClientAddressState,
   setClientAddressPostalCode,
   setClientAddressCountry,
+  addBlankInvoiceItem,
 } from '@components/Invoices/Form/actions';
 import { blankInvoice } from '@components/Invoices/Form';
 import { Invoice, Currency } from '@appTypes/index';
@@ -28,7 +29,9 @@ import Dropdown from '@components/Form/Dropdown';
 import Label from '@components/Form/Label';
 
 import { Legend } from './subcomponents/styles';
+import AddItemButton from './subcomponents/AddItemButton';
 import ContactFieldset from './subcomponents/ContactFieldset';
+import DisplayItems from './subcomponents/DisplayItems';
 
 /**
  * Styled form.
@@ -45,6 +48,10 @@ const Form = styled.form`
 const Fieldset = styled.fieldset`
   all: unset;
   display: block;
+
+  & > *:not(legend) {
+    margin-bottom: 15px;
+  }
 `;
 
 /**
@@ -143,26 +150,43 @@ export const InvoiceForm: React.FC<InvoiceFormProps<Action>> = ({
       <Fieldset>
         <Legend>Items</Legend>
 
-        <Label htmlFor="currency-code" isRequired>
-          Currency
-        </Label>
-        <Dropdown
-          id="currency-code"
-          handleChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-            dispatch(setCurrency(e.target.value as Currency));
-          }}
-          value={formValues.currency}
-          disabled={disabled || readOnly}
-          handleClearButtonClick={() =>
-            dispatch(setCurrency(blankInvoice.currency))
-          }>
-          <option disabled hidden>
-            (Select one)
-          </option>
-          <option value={Currency.CAD}>Canadian Dollar (CAD)</option>
-          <option value={Currency.JPY}>Japanese Yen (JPY)</option>
-          <option value={Currency.USD}>United States Dollar (USD)</option>
-        </Dropdown>
+        <div>
+          <Label htmlFor="currency-code" isRequired>
+            Currency
+          </Label>
+          <Dropdown
+            id="currency-code"
+            handleChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+              dispatch(setCurrency(e.target.value as Currency));
+            }}
+            value={formValues.currency}
+            disabled={disabled || readOnly}
+            handleClearButtonClick={() =>
+              dispatch(setCurrency(blankInvoice.currency))
+            }>
+            <option disabled hidden>
+              (Select one)
+            </option>
+            <option value={Currency.CAD}>Canadian Dollar (CAD)</option>
+            <option value={Currency.JPY}>Japanese Yen (JPY)</option>
+            <option value={Currency.USD}>United States Dollar (USD)</option>
+          </Dropdown>
+        </div>
+
+        {formValues.items.length > 0 ? (
+          <DisplayItems
+            currency={formValues.currency}
+            items={formValues.items}
+          />
+        ) : undefined}
+
+        {!(readOnly || disabled) ? (
+          <AddItemButton
+            handleClick={() => {
+              dispatch(addBlankInvoiceItem());
+            }}
+          />
+        ) : undefined}
       </Fieldset>
 
       <ContainerButtons>
