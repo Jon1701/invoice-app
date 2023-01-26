@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 import { InvoiceItem } from '@appTypes/index';
-import WhiteButton from '@components/Button/WhiteButton';
+import { Button, Shape, Variant, ColorScheme } from '@components/Button';
 
 /**
  * Component container.
@@ -30,18 +30,6 @@ const Row = styled.tr`
   &:hover {
     background-color: #453c67;
   }
-`;
-
-/**
- * Styled white button.
- */
-const StyledWhiteButton = styled(WhiteButton)`
-  display: inline;
-  padding: 3px;
-
-  aspect-ratio: 1 / 1;
-  width: 35px;
-  height: auto;
 `;
 
 /**
@@ -83,9 +71,17 @@ const DisplayItems: React.FC<Props> = ({ currency, items }) => {
               </td>
               <td>{description}</td>
               <td style={{ textAlign: 'right' }}>
-                <StyledWhiteButton type="button">
+                <Button
+                  type="button"
+                  variant={Variant.Solid}
+                  colorScheme={ColorScheme.White}
+                  shape={Shape.Rounded}
+                  minWidth="1px"
+                  width="35px"
+                  aspectRatio="1 / 1"
+                  padding="0">
                   <FontAwesomeIcon icon={faPencil} size={'1x'} />
-                </StyledWhiteButton>
+                </Button>
               </td>
             </Row>
           );

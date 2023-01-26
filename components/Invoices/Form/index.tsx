@@ -24,7 +24,7 @@ import {
 } from '@components/Invoices/Form/actions';
 import { blankInvoice } from '@components/Invoices/Form';
 import { Invoice, Currency } from '@appTypes/index';
-import { SolidButton, HollowButton } from '@components/Button';
+import { Button, ColorScheme, Shape, Variant } from '@components/Button';
 import Dropdown from '@components/Form/Dropdown';
 import Label from '@components/Form/Label';
 
@@ -190,11 +190,24 @@ export const InvoiceForm: React.FC<InvoiceFormProps<Action>> = ({
       </Fieldset>
 
       <ContainerButtons>
-        <SolidButton type="submit">Submit</SolidButton>
+        <Button
+          type="submit"
+          shape={Shape.Rounded}
+          variant={Variant.Solid}
+          colorScheme={ColorScheme.Purple}
+          minWidth="150px">
+          Submit
+        </Button>
         {handleReset !== undefined ? (
-          <HollowButton type="reset" onClick={handleReset}>
+          <Button
+            type="reset"
+            onClick={handleReset}
+            shape={Shape.Rounded}
+            variant={Variant.Hollow}
+            colorScheme={ColorScheme.Purple}
+            minWidth="150px">
             Clear
-          </HollowButton>
+          </Button>
         ) : undefined}
       </ContainerButtons>
     </Form>
