@@ -53,11 +53,9 @@ const Content = styled.div<NumChildren>`
   max-width: 90vw;
   max-height: 90vh;
   z-index: ${props => props.numChildren + ZIndexOffsets.Content};
-
-  overflow-y: scroll;
 `;
 
-interface PortalWrapperProps {
+export interface PortalWrapperProps {
   /**
    * Background colour.
    */

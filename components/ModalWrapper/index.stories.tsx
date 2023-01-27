@@ -1,7 +1,15 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import PortalWrapper from '.';
+import ModalWrapper from '.';
+
+// Selectable titles.
+const titleMapping = {
+  'Short-length Title': 'Hello World',
+  'Medium-length Title': 'Lorem ipsum dolor sit amet consectetur.',
+  'Long title':
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quod culpa eaque repudiandae eveniet quibusdam numquam error quasi cumque quam omnis dicta, veritatis reprehenderit porro possimus quis ex asperiores in.',
+};
 
 // Filler text to simulate page content.
 const fillerText =
@@ -18,40 +26,42 @@ const backgroundColorMapping = {
   'Translucent Colour 1': 'rgb(96 191 123 / 0.25)',
   'Translucent Colour 2': 'rgb(66 0 57 / 0.5)',
   Transparent: 'transparent',
+  'Default Background': undefined,
 };
 
 // Selectable functions for the background onClick function.
 const backgroundOnClickMapping = {
-  'Say Hello World': () => {
-    window.alert('Hello World');
+  'Display alert': () => {
+    window.alert('The background has been clicked!');
   },
   'No Alert': undefined,
 };
 
 // Selectable Portal content.
 const childrenMapping = {
-  'Lorem Ipsum': (
-    <div style={{ backgroundColor: '#000', color: '#fff', padding: '25px' }}>
-      {fillerText}
-    </div>
+  'Single Paragraph': <div>{fillerText}</div>,
+  'Multiple Paragraphs': (
+    <React.Fragment>
+      {arrayFillerText.map((item, index) => {
+        return (
+          <div key={index} style={{ marginBottom: '15px' }}>
+            {item}
+          </div>
+        );
+      })}
+    </React.Fragment>
   ),
-  'Lorem Ipsum with Button': (
-    <div style={{ backgroundColor: '#000', color: '#fff', padding: '25px' }}>
-      <div>{fillerText}</div>
-      <div>
-        <button
-          type="button"
-          onClick={() => {
-            window.alert('I got clicked!');
-          }}>
-          Click me
-        </button>
-      </div>
-    </div>
-  ),
+  'A few words': <div>Hello World!</div>,
 };
 
 const argTypes = {
+  title: {
+    options: Object.keys(titleMapping),
+    mapping: titleMapping,
+    control: {
+      type: 'radio',
+    },
+  },
   backgroundColor: {
     options: Object.keys(backgroundColorMapping),
     mapping: backgroundColorMapping,
@@ -76,24 +86,22 @@ const argTypes = {
 };
 
 export default {
-  component: PortalWrapper,
+  component: ModalWrapper,
   argTypes,
-} as ComponentMeta<typeof PortalWrapper>;
+} as ComponentMeta<typeof ModalWrapper>;
 
-const Template: ComponentStory<typeof PortalWrapper> = args => (
+const Template: ComponentStory<typeof ModalWrapper> = args => (
   <main>
-    <h1>Lorem Ipsum</h1>
+    <h1>Hello World</h1>
 
-    {arrayFillerText.map((item, index) => {
-      return <p key={index}>{item}</p>;
-    })}
-    <PortalWrapper {...args} />
+    <ModalWrapper {...args} />
   </main>
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  backgroundColor: backgroundColorMapping['Translucent Colour 2'],
-  children: childrenMapping['Lorem Ipsum with Button'],
-  backgroundOnClick: backgroundOnClickMapping['Say Hello World'],
+  title: 'This is the modal title',
+  handleCloseButtonClick: () => {
+    alert('The close button has been clicked!');
+  },
 };
