@@ -22,8 +22,8 @@ const backgroundColorMapping = {
 
 // Selectable functions for the background onClick function.
 const backgroundOnClickMapping = {
-  'Say Hello World': () => {
-    window.alert('Hello World');
+  'With Background onClick': () => {
+    window.alert('Background has been clicked!');
   },
   'No Alert': undefined,
 };
@@ -95,5 +95,5 @@ export const Default = Template.bind({});
 Default.args = {
   backgroundColor: backgroundColorMapping['Translucent Colour 2'],
   children: childrenMapping['Lorem Ipsum with Button'],
-  backgroundOnClick: backgroundOnClickMapping['Say Hello World'],
+  backgroundOnClick: backgroundOnClickMapping['With Background onClick'],
 };

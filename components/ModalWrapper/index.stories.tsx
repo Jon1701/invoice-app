@@ -51,6 +51,28 @@ const childrenMapping = {
       })}
     </React.Fragment>
   ),
+  'Multiple Paragraphs with 600px Minimum width': (
+    <div style={{ minWidth: '600px' }}>
+      {arrayFillerText.map((item, index) => {
+        return (
+          <div key={index} style={{ marginBottom: '15px' }}>
+            {item}
+          </div>
+        );
+      })}
+    </div>
+  ),
+  'Multiple Paragraphs with 1200px Minimum width': (
+    <div style={{ minWidth: '1200px' }}>
+      {arrayFillerText.map((item, index) => {
+        return (
+          <div key={index} style={{ marginBottom: '15px' }}>
+            {item}
+          </div>
+        );
+      })}
+    </div>
+  ),
   'A few words': <div>Hello World!</div>,
 };
 
@@ -90,13 +112,25 @@ export default {
   argTypes,
 } as ComponentMeta<typeof ModalWrapper>;
 
-const Template: ComponentStory<typeof ModalWrapper> = args => (
-  <main>
-    <h1>Hello World</h1>
+const Template: ComponentStory<typeof ModalWrapper> = args => {
+  return (
+    <main>
+      <h1>Hello World</h1>
 
-    <ModalWrapper {...args} />
-  </main>
-);
+      <ModalWrapper {...args} />
+
+      <div>
+        {arrayFillerText.map((item, index) => {
+          return (
+            <div key={index} style={{ marginBottom: '15px' }}>
+              {item}
+            </div>
+          );
+        })}
+      </div>
+    </main>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {

@@ -14,10 +14,9 @@ const Container = styled.div`
   border: solid 1.5px #fff;
   background-color: #25273c;
   border-radius: 3px;
-  min-width: 250px;
-  max-width: 650px;
 
-  width: 100%;
+  max-width: calc(100vw - 15px);
+  max-height: calc(100vh - 15px);
 `;
 
 /**
@@ -42,6 +41,7 @@ const Title = styled.div`
  */
 const Body = styled.div`
   padding: 10px;
+
   max-height: 400px;
   overflow-y: scroll;
 `;

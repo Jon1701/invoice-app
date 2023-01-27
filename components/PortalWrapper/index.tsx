@@ -21,13 +21,13 @@ interface NumChildren {
  */
 const Container = styled.div<NumChildren>`
   position: fixed;
+  top: 0;
+  left: 0;
+
   width: 100vw;
   height: 100vh;
 
   z-index: ${props => props.numChildren + ZIndexOffsets.Container};
-
-  display: grid;
-  place-items: center;
 `;
 
 interface BackgroundProps {
@@ -38,20 +38,30 @@ interface BackgroundProps {
  * Container for the background colour.
  */
 const Background = styled.div<NumChildren & BackgroundProps>`
-  position: fixed;
-  background-color: ${props => props.backgroundColor || 'rgb(0 0 0 / 0.8)'};
-  z-index: ${props => props.numChildren + ZIndexOffsets.Background};
+  position: absolute;
+  top: 0;
+  left: 0;
 
   width: 100vw;
   height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+
+  background-color: ${props => props.backgroundColor || 'rgb(0 0 0 / 0.8)'};
+  z-index: ${props => props.numChildren + ZIndexOffsets.Background};
 `;
 
 /**
  * Container for the content displayed.
  */
 const Content = styled.div<NumChildren>`
-  max-width: 90vw;
-  max-height: 90vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  overflow-y: auto;
+
   z-index: ${props => props.numChildren + ZIndexOffsets.Content};
 `;
 
