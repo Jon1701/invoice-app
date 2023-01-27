@@ -15,6 +15,7 @@ export const decorators = [
   Story => (
     <React.Fragment>
       <GlobalStyle />
+      <div id="portal-modal"></div>
       <Story />
     </React.Fragment>
   ),
