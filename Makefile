@@ -22,8 +22,7 @@ lint: run-eslint run-prettier run-stylelint
 # Runs ESLint.
 run-eslint:
 	@echo "Running ESLint..."
-	@${PATH_NODE_MODULES_BIN}/next \
-		lint
+	@${PATH_NODE_MODULES_BIN}/eslint "**/*.{ts,tsx,js}"
 	@echo "Done running ESLint."
 
 # Runs Prettier.
