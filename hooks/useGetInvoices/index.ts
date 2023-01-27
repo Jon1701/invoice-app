@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { Invoice } from '@appTypes/index';
 

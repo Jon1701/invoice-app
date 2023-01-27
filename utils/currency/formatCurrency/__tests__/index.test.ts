@@ -1,6 +1,4 @@
-import React from 'react';
 import { describe, test, expect } from '@jest/globals';
-import { render } from '@testing-library/react';
 
 import { Currency } from '@appTypes/index';
 
@@ -11,7 +9,7 @@ describe('formatCurrency()', () => {
     const currencyCode: Currency = Currency.USD;
 
     describe('with amount = 0', () => {
-      const amount: number = 0;
+      const amount = 0;
 
       test('should format it as "$0.00"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -22,7 +20,7 @@ describe('formatCurrency()', () => {
     });
 
     describe('with amount = 1', () => {
-      const amount: number = 1;
+      const amount = 1;
 
       test('should format it as "$1.00"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -33,7 +31,7 @@ describe('formatCurrency()', () => {
     });
 
     describe('with amount = 314', () => {
-      const amount: number = 314;
+      const amount = 314;
 
       test('should format it as "$314"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -44,7 +42,7 @@ describe('formatCurrency()', () => {
     });
 
     describe('with amount = 1386.37', () => {
-      const amount: number = 1386.37;
+      const amount = 1386.37;
 
       test('should format it as "$1,386.37"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -55,7 +53,7 @@ describe('formatCurrency()', () => {
     });
 
     describe('with amount = 9817033.91', () => {
-      const amount: number = 9817033.91;
+      const amount = 9817033.91;
 
       test('should format it as "$9,817,033.91"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -70,7 +68,7 @@ describe('formatCurrency()', () => {
     const currencyCode: Currency = Currency.CAD;
 
     describe('with amount = 0', () => {
-      const amount: number = 0;
+      const amount = 0;
 
       test('should format it as "$0.00"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -81,7 +79,7 @@ describe('formatCurrency()', () => {
     });
 
     describe('with amount = 84', () => {
-      const amount: number = 84;
+      const amount = 84;
 
       test('should format it as "$84.00"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -92,7 +90,7 @@ describe('formatCurrency()', () => {
     });
 
     describe('with amount = 74.1', () => {
-      const amount: number = 74.1;
+      const amount = 74.1;
 
       test('should format it as "$74.10"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -103,7 +101,7 @@ describe('formatCurrency()', () => {
     });
 
     describe('with amount = 381736563816', () => {
-      const amount: number = 381736563816;
+      const amount = 381736563816;
 
       test('should format it as "$381,736,563,816.00"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -118,7 +116,7 @@ describe('formatCurrency()', () => {
     const currencyCode: Currency = Currency.JPY;
 
     describe('with amount = 0', () => {
-      const amount: number = 0;
+      const amount = 0;
 
       test('should format it as "¥0"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -129,7 +127,7 @@ describe('formatCurrency()', () => {
     });
 
     describe('with amount = 371', () => {
-      const amount: number = 371;
+      const amount = 371;
 
       test('should format it as "¥371"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -140,7 +138,7 @@ describe('formatCurrency()', () => {
     });
 
     describe('with amount = 1024', () => {
-      const amount: number = 1024;
+      const amount = 1024;
 
       test('should format it as "¥1,024"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -151,7 +149,7 @@ describe('formatCurrency()', () => {
     });
 
     describe('with amount = 498167567', () => {
-      const amount: number = 498167567;
+      const amount = 498167567;
 
       test('should format it as "¥498,167,567"', () => {
         const actual = formatCurrency(currencyCode, amount);

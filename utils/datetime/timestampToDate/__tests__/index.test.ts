@@ -7,7 +7,6 @@ describe('timestampToDate()', () => {
     const timestamp = undefined;
 
     test('it should return undefined', () => {
-      const expected = undefined;
       const actual = timestampToDate(timestamp);
 
       expect(actual).toBeUndefined();

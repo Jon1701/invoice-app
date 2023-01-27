@@ -1,4 +1,3 @@
-import React from 'react';
 import { describe, test } from '@jest/globals';
 
 import { InvoiceStatus } from '@appTypes/index';

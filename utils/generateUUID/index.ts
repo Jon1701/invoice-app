@@ -11,7 +11,7 @@ export enum UUIDTypeEnums {
  * @returns UUID with prefix.
  */
 const generateUUID = (type: UUIDTypeEnums): string => {
-  let uuid = uuidv4().replaceAll('-', '');
+  const uuid = uuidv4().replaceAll('-', '');
 
   return `${type}_${uuid}`;
 };

@@ -1,4 +1,4 @@
-import { Invoice, InvoiceStatus } from '@appTypes/index';
+import { InvoiceStatus } from '@appTypes/index';
 
 /**
  * Returns the user-friendly status from an Invoice status enum.

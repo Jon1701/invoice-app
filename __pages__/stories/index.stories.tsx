@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentMeta } from '@storybook/react';
-import GlobalStyle from '@components/GlobalStyle';
 
 import IndexPage from '@pages/index';
 
