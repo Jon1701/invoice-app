@@ -51,7 +51,12 @@ const originalData: Array<Invoice> = [
         unitPrice: 12.36,
         quantity: 88,
       },
-      { description: 'Plasma Conduit', unitPrice: 9102, quantity: 84 },
+      {
+        id: 'invoiceitem_a40957b920af41f08ea89e9c192b2076',
+        description: 'Plasma Conduit',
+        unitPrice: 9102,
+        quantity: 84,
+      },
     ],
   },
   {

@@ -1,53 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Button, Shape, Variant, ColorScheme } from '@components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
+import { Button, Shape, Variant, ColorScheme } from '@components/Button';
+import { Table, RowGroup, Row, Heading, Cell } from '@components/Table/Mobile';
 import { InvoiceItem } from '@appTypes/index';
 
 import { DisplayInvoiceItemsProps } from '.';
-
-/**
- * Component container.
- */
-const Container = styled.div`
-  width: 100%;
-`;
-
-/**
- * Container for an Invoice Item.
- */
-const ContainerItem = styled.div`
-  border: solid 1.5px #fff;
-  padding: 15px;
-
-  &:not(:last-child) {
-    margin-bottom: 15px;
-  }
-
-  transition: ease-in-out 0.2s;
-
-  &:hover {
-    background-color: #453c67;
-  }
-`;
-
-/**
- * Heading.
- */
-const Heading = styled.div`
-  font-weight: 700;
-`;
-
-/**
- * Row.
- */
-const Row = styled.div`
-  &:not(:last-child) {
-    margin-bottom: 15px;
-  }
-`;
 
 /**
  * Displays a table of Invoice Items (Mobile layout).
@@ -57,29 +16,29 @@ const MobileInvoiceItems: React.FC<DisplayInvoiceItemsProps> = ({
   items,
 }) => {
   return (
-    <Container>
+    <Table>
       {items.map((item: InvoiceItem) => {
         const { id, description, quantity, unitPrice } = item;
 
         return (
-          <ContainerItem key={id}>
+          <RowGroup key={id}>
             <Row>
               <Heading>Description</Heading>
-              <div>{description}</div>
+              <Cell>{description}</Cell>
             </Row>
             <Row>
               <Heading>Quantity</Heading>
-              <div>{quantity}</div>
+              <Cell>{quantity}</Cell>
             </Row>
             <Row>
               <Heading>Unit Price</Heading>
-              <div>
+              <Cell>
                 {currency} {unitPrice}
-              </div>
+              </Cell>
             </Row>
             <Row>
               <Heading>Actions</Heading>
-              <div>
+              <Cell>
                 <Button
                   type="button"
                   variant={Variant.Solid}
@@ -91,12 +50,12 @@ const MobileInvoiceItems: React.FC<DisplayInvoiceItemsProps> = ({
                   padding="0">
                   <FontAwesomeIcon icon={faPencil} size={'1x'} />
                 </Button>
-              </div>
+              </Cell>
             </Row>
-          </ContainerItem>
+          </RowGroup>
         );
       })}
-    </Container>
+    </Table>
   );
 };
 
