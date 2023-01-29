@@ -6,6 +6,7 @@ import { ContactInfo } from '@appTypes/index';
 import Dropdown from '@components/Form/Dropdown';
 import InputText from '@components/Form/InputText';
 import Label from '@components/Form/Label';
+import { breakpoints } from '@utils/breakpoints';
 
 import { Legend } from './styles';
 
@@ -16,8 +17,16 @@ const Container = styled.fieldset`
   all: unset;
 
   display: grid;
+
+  @media screen and (min-width: ${breakpoints.mobile
+      .min}px) and (max-width: ${breakpoints.mobile.max}px) {
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(2, 1fr);
+
   gap: 15px;
 `;
 

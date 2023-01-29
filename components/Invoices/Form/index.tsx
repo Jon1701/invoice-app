@@ -25,13 +25,14 @@ import {
 import { blankInvoice } from '@components/Invoices/Form';
 import { Invoice, Currency } from '@appTypes/index';
 import { Button, ColorScheme, Shape, Variant } from '@components/Button';
+import { breakpoints } from '@utils/breakpoints';
 import Dropdown from '@components/Form/Dropdown';
 import Label from '@components/Form/Label';
 
 import { Legend } from './subcomponents/styles';
 import AddItemButton from './subcomponents/AddItemButton';
 import ContactFieldset from './subcomponents/ContactFieldset';
-import DisplayItems from './subcomponents/DisplayItems';
+import DisplayInvoiceItems from './subcomponents/DisplayInvoiceItems';
 
 /**
  * Styled form.
@@ -58,12 +59,19 @@ const Fieldset = styled.fieldset`
  * Container for the Submit/Cancel buttons.
  */
 const ContainerButtons = styled.div`
-  margin-top: 25px;
+  display: grid;
+  gap: 15px;
 
-  text-align: center;
+  @media screen and (max-width: ${breakpoints.mobile.max}px) {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+  }
 
-  & > button:not(:last-child) {
-    margin-right: 15px;
+  @media screen and (min-width: ${breakpoints.tablet.min}px) {
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 250px);
+
+    justify-content: center;
   }
 `;
 
@@ -173,8 +181,8 @@ export const InvoiceForm: React.FC<InvoiceFormProps<Action>> = ({
           </Dropdown>
         </div>
 
-        {formValues.items.length > 0 ? (
-          <DisplayItems
+        {formValues?.items.length > 0 ? (
+          <DisplayInvoiceItems
             currency={formValues.currency}
             items={formValues.items}
           />
@@ -187,29 +195,27 @@ export const InvoiceForm: React.FC<InvoiceFormProps<Action>> = ({
             }}
           />
         ) : undefined}
-      </Fieldset>
 
-      <ContainerButtons>
-        <Button
-          type="submit"
-          shape={Shape.Rounded}
-          variant={Variant.Solid}
-          colorScheme={ColorScheme.Purple}
-          minWidth="150px">
-          Submit
-        </Button>
-        {handleReset !== undefined ? (
+        <ContainerButtons>
           <Button
-            type="reset"
-            onClick={handleReset}
+            type="submit"
             shape={Shape.Rounded}
-            variant={Variant.Hollow}
-            colorScheme={ColorScheme.Purple}
-            minWidth="150px">
-            Clear
+            variant={Variant.Solid}
+            colorScheme={ColorScheme.Purple}>
+            Submit
           </Button>
-        ) : undefined}
-      </ContainerButtons>
+          {handleReset !== undefined ? (
+            <Button
+              type="reset"
+              onClick={handleReset}
+              shape={Shape.Rounded}
+              variant={Variant.Hollow}
+              colorScheme={ColorScheme.Purple}>
+              Clear
+            </Button>
+          ) : undefined}
+        </ContainerButtons>
+      </Fieldset>
     </Form>
   );
 };

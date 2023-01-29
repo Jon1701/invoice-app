@@ -6,6 +6,8 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { InvoiceItem } from '@appTypes/index';
 import { Button, Shape, Variant, ColorScheme } from '@components/Button';
 
+import { DisplayInvoiceItemsProps } from '.';
+
 /**
  * Component container.
  */
@@ -33,31 +35,21 @@ const Row = styled.tr`
 `;
 
 /**
- * Component props.
+ * Displays a table of Invoice Items (Desktop layout).
  */
-interface Props {
-  /**
-   * Currency code.
-   */
-  currency: string;
-
-  /**
-   * Array of Invoice Items.
-   */
-  items: Array<InvoiceItem>;
-}
-
-/**
- * Displays a table of Invoice Items.
- */
-const DisplayItems: React.FC<Props> = ({ currency, items }) => {
+const DesktopInvoiceItems: React.FC<DisplayInvoiceItemsProps> = ({
+  currency,
+  items,
+}) => {
   return (
     <Container>
       <thead>
-        <th style={{ textAlign: 'left' }}>Quantity</th>
-        <th>Unit Price</th>
-        <th>Description</th>
-        <th style={{ textAlign: 'right' }}>Actions</th>
+        <tr>
+          <th style={{ textAlign: 'left' }}>Quantity</th>
+          <th>Unit Price</th>
+          <th>Description</th>
+          <th style={{ textAlign: 'right' }}>Actions</th>
+        </tr>
       </thead>
       <tbody>
         {items.map((item: InvoiceItem) => {
@@ -91,4 +83,4 @@ const DisplayItems: React.FC<Props> = ({ currency, items }) => {
   );
 };
 
-export default DisplayItems;
+export default DesktopInvoiceItems;
