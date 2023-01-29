@@ -57,6 +57,37 @@ const originalData: Array<Invoice> = [
         unitPrice: 9102,
         quantity: 84,
       },
+      {
+        id: 'invoiceitem_a6be1a51b249453abd2f301bd1b204d6',
+        description: 'Quantum Torpedo',
+        unitPrice: 123957,
+        quantity: 47,
+      },
+      {
+        id: 'invoiceitem_3007759a86c34937a41e5b18d49c42e6',
+        description: 'Medical Tricorder',
+        unitPrice: 2582,
+        quantity: 155,
+      },
+      {
+        id: 'invoiceitem_4c461cf74b3a4b90a961b19e3631842b',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        unitPrice: 120346879,
+        quantity: 1325,
+      },
+      {
+        id: 'invoiceitem_9e257977e9364b82b4422d2dd2d0a0aa',
+        description: 'Polarized Hull Plate',
+        unitPrice: 356812,
+        quantity: 1825,
+      },
+      {
+        id: 'invoiceitem_bfb9bc3326cb4a87a163ce56c2601067',
+        description: 'Antimatter Injector',
+        unitPrice: 47387,
+        quantity: 5,
+      },
     ],
   },
   {
@@ -107,6 +138,13 @@ const originalData: Array<Invoice> = [
         unitPrice: 7.9,
         quantity: 363,
       },
+      {
+        id: 'invoiceitem_1deee6c0df3c4a058f717bea813a2c0b',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at consectetur lorem donec. Egestas sed tempus urna et pharetra pharetra massa. Bibendum enim facilisis gravida neque convallis a cras. Nunc aliquet bibendum enim facilisis gravida neque convallis. Lacus vestibulum sed arcu non odio euismod lacinia at. Varius sit amet mattis vulputate. Orci dapibus ultrices in iaculis. A erat nam at lectus urna duis convallis convallis. Vel eros donec ac odio tempor orci dapibus ultrices. Metus vulputate eu scelerisque felis imperdiet proin. Dictum non consectetur a erat nam at lectus urna. Dictum sit amet justo donec enim diam vulputate ut pharetra.',
+        unitPrice: 25929578.3,
+        quantity: 346234,
+      },
     ],
   },
   {
@@ -140,9 +178,9 @@ const originalData: Array<Invoice> = [
     items: [
       {
         id: 'invoiceitem_a43047d100d8459198fbfb59bdfd9f8e',
-        description: 'Hull Plate',
-        unitPrice: 5851674,
-        quantity: 50,
+        description: 'M-5 Computer',
+        unitPrice: 3623441,
+        quantity: 15,
       },
     ],
   },
