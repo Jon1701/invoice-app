@@ -6,7 +6,7 @@ import useGetInvoices, {
   HookStatus,
 } from '@hooks/useGetInvoices';
 import Layout from '@layouts/IndexPage';
-import ListInvoicesTable from '@components/Invoices/ListInvoicesTable';
+import ListInvoicesTable from '@components/Invoices/Tables/ListInvoices';
 import Loading from '@components/Loading';
 
 import { NextPageWithLayout } from './_app';
@@ -33,6 +33,16 @@ const H1 = styled.h1`
 `;
 
 /**
+ * Container for the No Data message.
+ */
+const ContainerNoData = styled.div`
+  text-align: center;
+  border: solid 1.5px #fff;
+  border-radius: 3px;
+  padding: 15px;
+`;
+
+/**
  * Index page.
  */
 const IndexPage: NextPageWithLayout = () => {
@@ -54,7 +64,13 @@ const IndexPage: NextPageWithLayout = () => {
         return <Loading />;
 
       case HookStatus.Success:
-        return <ListInvoicesTable invoices={invoices} />;
+        {
+          if (invoices.length === 0) {
+            return <ContainerNoData>No Invoices found.</ContainerNoData>;
+          }
+          return <ListInvoicesTable invoices={invoices} />;
+        }
+        break;
 
       default:
         return (
