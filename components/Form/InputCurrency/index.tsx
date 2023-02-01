@@ -27,11 +27,6 @@ const currencyInfo = {
     exponent: 2,
     prefix: '$',
   },
-  [Currency.JPY]: {
-    base: 10,
-    exponent: 0,
-    prefix: '¥',
-  },
 };
 
 /**

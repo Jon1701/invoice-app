@@ -176,7 +176,6 @@ export const InvoiceForm: React.FC<InvoiceFormProps<Action>> = ({
               (Select one)
             </option>
             <option value={Currency.CAD}>Canadian Dollar (CAD)</option>
-            <option value={Currency.JPY}>Japanese Yen (JPY)</option>
             <option value={Currency.USD}>United States Dollar (USD)</option>
           </Dropdown>
         </div>

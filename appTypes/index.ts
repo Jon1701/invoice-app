@@ -13,7 +13,6 @@ export enum InvoiceStatus {
 export enum Currency {
   CAD = 'CAD',
   USD = 'USD',
-  JPY = 'JPY',
 }
 
 /**

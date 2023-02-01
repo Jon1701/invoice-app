@@ -51,7 +51,7 @@ describe('setInvoice()', () => {
 
 describe('setCurrency()', () => {
   test('should return the corresponding action', () => {
-    const currency: Currency = Currency.JPY;
+    const currency: Currency = Currency.USD;
 
     const actual = setCurrency(currency);
     const expected: ActionCreator<Currency> = {

@@ -150,7 +150,7 @@ const originalData: Array<Invoice> = [
   {
     id: '3',
     amount: { total: 0 },
-    currency: Currency.JPY,
+    currency: Currency.USD,
     status: InvoiceStatus.Pending,
     biller: {
       name: 'Jean-Luc Picard',

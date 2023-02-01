@@ -83,7 +83,7 @@ describe('invoiceReducer()', () => {
       const initialState: Invoice = deepClone(sampleInvoices[0]);
 
       test('should return the Invoice with just the Currency field updated', () => {
-        const currency = Currency.JPY;
+        const currency = Currency.USD;
 
         // Manually set new Currency.
         const expected: Invoice = deepClone(initialState);
@@ -102,7 +102,7 @@ describe('invoiceReducer()', () => {
       const initialState: Invoice = deepClone(blankInvoice);
 
       test('should return the Invoice with just the Currency field updated', () => {
-        const currency = Currency.JPY;
+        const currency = Currency.USD;
 
         // Manually set new Currency.
         const expected: Invoice = deepClone(initialState);

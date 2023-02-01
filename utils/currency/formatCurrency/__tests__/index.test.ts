@@ -112,15 +112,15 @@ describe('formatCurrency()', () => {
     });
   });
 
-  describe('with currencyCode = "JPY"', () => {
-    const currencyCode: Currency = Currency.JPY;
+  describe('with currencyCode = "USD"', () => {
+    const currencyCode: Currency = Currency.USD;
 
     describe('with amount = 0', () => {
       const amount = 0;
 
-      test('should format it as "¥0"', () => {
+      test('should format it as "$0.00"', () => {
         const actual = formatCurrency(currencyCode, amount);
-        const expected = '¥0';
+        const expected = '$0.00';
 
         expect(actual).toBe(expected);
       });
@@ -129,9 +129,9 @@ describe('formatCurrency()', () => {
     describe('with amount = 371', () => {
       const amount = 371;
 
-      test('should format it as "¥371"', () => {
+      test('should format it as "$371.00"', () => {
         const actual = formatCurrency(currencyCode, amount);
-        const expected = '¥371';
+        const expected = '$371.00';
 
         expect(actual).toBe(expected);
       });
@@ -140,9 +140,9 @@ describe('formatCurrency()', () => {
     describe('with amount = 1024', () => {
       const amount = 1024;
 
-      test('should format it as "¥1,024"', () => {
+      test('should format it as "$1,024.00"', () => {
         const actual = formatCurrency(currencyCode, amount);
-        const expected = '¥1,024';
+        const expected = '$1,024.00';
 
         expect(actual).toBe(expected);
       });
@@ -151,9 +151,9 @@ describe('formatCurrency()', () => {
     describe('with amount = 498167567', () => {
       const amount = 498167567;
 
-      test('should format it as "¥498,167,567"', () => {
+      test('should format it as "$498,167,567.00"', () => {
         const actual = formatCurrency(currencyCode, amount);
-        const expected = '¥498,167,567';
+        const expected = '$498,167,567.00';
 
         expect(actual).toBe(expected);
       });
