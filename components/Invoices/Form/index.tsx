@@ -23,9 +23,9 @@ import {
   addBlankInvoiceItem,
 } from '@components/Invoices/Form/actions';
 import { blankInvoice } from '@components/Invoices/Form';
-import { Invoice, CurrencyCode } from '@appTypes/index';
 import { Button, ColorScheme, Shape, Variant } from '@components/Button';
-import { breakpoints } from '@utils/breakpoints';
+import { Invoice, CurrencyCode } from '@appTypes/index';
+import ContainerSubmitResetButtons from '@components/Form/ContainerSubmitResetButtons';
 import Dropdown from '@components/Form/Dropdown';
 import Label from '@components/Form/Label';
 
@@ -52,26 +52,6 @@ const Fieldset = styled.fieldset`
 
   & > *:not(legend) {
     margin-bottom: 15px;
-  }
-`;
-
-/**
- * Container for the Submit/Cancel buttons.
- */
-const ContainerButtons = styled.div`
-  display: grid;
-  gap: 15px;
-
-  @media screen and (max-width: ${breakpoints.mobile.max}px) {
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  @media screen and (min-width: ${breakpoints.tablet.min}px) {
-    grid-template-rows: repeat(1, 1fr);
-    grid-template-columns: repeat(2, 250px);
-
-    justify-content: center;
   }
 `;
 
@@ -195,7 +175,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps<Action>> = ({
           />
         ) : undefined}
 
-        <ContainerButtons>
+        <ContainerSubmitResetButtons>
           <Button
             type="submit"
             shape={Shape.Rounded}
@@ -213,7 +193,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps<Action>> = ({
               Clear
             </Button>
           ) : undefined}
-        </ContainerButtons>
+        </ContainerSubmitResetButtons>
       </Fieldset>
     </Form>
   );

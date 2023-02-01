@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { breakpoints } from '@utils/breakpoints';
 import { Button, Shape, Variant, ColorScheme } from '@components/Button';
 import { InvoiceItem, CurrencyCode } from '@appTypes/index';
+import ContainerSubmitResetButtons from '@components/Form/ContainerSubmitResetButtons';
 import InputCurrency from '@components/Form/InputCurrency';
 import InputText from '@components/Form/InputText';
 import Label from '@components/Form/Label';
@@ -56,26 +57,6 @@ const Fieldset = styled.fieldset`
     & > *:nth-child(3) {
       grid-area: 2 / 1 / 3 / 3;
     }
-  }
-`;
-
-/**
- * Container for the Submit/Cancel buttons.
- */
-const ContainerButtons = styled.div`
-  display: grid;
-  gap: 15px;
-
-  @media screen and (max-width: ${breakpoints.mobile.max}px) {
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  @media screen and (min-width: ${breakpoints.tablet.min}px) {
-    grid-template-rows: repeat(1, 1fr);
-    grid-template-columns: repeat(2, 250px);
-
-    justify-content: center;
   }
 `;
 
@@ -176,7 +157,7 @@ const InvoiceItemForm: React.FC<Props> = ({
         </div>
       </Fieldset>
 
-      <ContainerButtons>
+      <ContainerSubmitResetButtons>
         <Button
           type="submit"
           shape={Shape.Rounded}
@@ -194,7 +175,7 @@ const InvoiceItemForm: React.FC<Props> = ({
           }}>
           Clear
         </Button>
-      </ContainerButtons>
+      </ContainerSubmitResetButtons>
     </Form>
   );
 };
