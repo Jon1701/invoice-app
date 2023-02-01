@@ -15,5 +15,5 @@ const Template: ComponentStory<typeof DisplayFormattedCurrency> = args => (
 export const Default = Template.bind({});
 Default.args = {
   currencyCode: Currency.CAD,
-  amount: 1823671726.18,
+  amount: 182367172618,
 };

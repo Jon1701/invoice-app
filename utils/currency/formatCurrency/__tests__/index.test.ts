@@ -22,9 +22,9 @@ describe('formatCurrency()', () => {
     describe('with amount = 1', () => {
       const amount = 1;
 
-      test('should format it as "$1.00"', () => {
+      test('should format it as "$0.01"', () => {
         const actual = formatCurrency(currencyCode, amount);
-        const expected = '$1.00';
+        const expected = '$0.01';
 
         expect(actual).toBe(expected);
       });
@@ -33,16 +33,16 @@ describe('formatCurrency()', () => {
     describe('with amount = 314', () => {
       const amount = 314;
 
-      test('should format it as "$314"', () => {
+      test('should format it as "$3.14"', () => {
         const actual = formatCurrency(currencyCode, amount);
-        const expected = '$314.00';
+        const expected = '$3.14';
 
         expect(actual).toBe(expected);
       });
     });
 
-    describe('with amount = 1386.37', () => {
-      const amount = 1386.37;
+    describe('with amount = 138637', () => {
+      const amount = 138637;
 
       test('should format it as "$1,386.37"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -52,8 +52,8 @@ describe('formatCurrency()', () => {
       });
     });
 
-    describe('with amount = 9817033.91', () => {
-      const amount = 9817033.91;
+    describe('with amount = 981703391', () => {
+      const amount = 981703391;
 
       test('should format it as "$9,817,033.91"', () => {
         const actual = formatCurrency(currencyCode, amount);
@@ -81,20 +81,20 @@ describe('formatCurrency()', () => {
     describe('with amount = 84', () => {
       const amount = 84;
 
-      test('should format it as "$84.00"', () => {
+      test('should format it as "$0.84"', () => {
         const actual = formatCurrency(currencyCode, amount);
-        const expected = '$84.00';
+        const expected = '$0.84';
 
         expect(actual).toBe(expected);
       });
     });
 
-    describe('with amount = 74.1', () => {
-      const amount = 74.1;
+    describe('with amount = 741', () => {
+      const amount = 741;
 
-      test('should format it as "$74.10"', () => {
+      test('should format it as "$7.41"', () => {
         const actual = formatCurrency(currencyCode, amount);
-        const expected = '$74.10';
+        const expected = '$7.41';
 
         expect(actual).toBe(expected);
       });
@@ -103,57 +103,9 @@ describe('formatCurrency()', () => {
     describe('with amount = 381736563816', () => {
       const amount = 381736563816;
 
-      test('should format it as "$381,736,563,816.00"', () => {
+      test('should format it as "$3,817,365,638.16"', () => {
         const actual = formatCurrency(currencyCode, amount);
-        const expected = '$381,736,563,816.00';
-
-        expect(actual).toBe(expected);
-      });
-    });
-  });
-
-  describe('with currencyCode = "USD"', () => {
-    const currencyCode: Currency = Currency.USD;
-
-    describe('with amount = 0', () => {
-      const amount = 0;
-
-      test('should format it as "$0.00"', () => {
-        const actual = formatCurrency(currencyCode, amount);
-        const expected = '$0.00';
-
-        expect(actual).toBe(expected);
-      });
-    });
-
-    describe('with amount = 371', () => {
-      const amount = 371;
-
-      test('should format it as "$371.00"', () => {
-        const actual = formatCurrency(currencyCode, amount);
-        const expected = '$371.00';
-
-        expect(actual).toBe(expected);
-      });
-    });
-
-    describe('with amount = 1024', () => {
-      const amount = 1024;
-
-      test('should format it as "$1,024.00"', () => {
-        const actual = formatCurrency(currencyCode, amount);
-        const expected = '$1,024.00';
-
-        expect(actual).toBe(expected);
-      });
-    });
-
-    describe('with amount = 498167567', () => {
-      const amount = 498167567;
-
-      test('should format it as "$498,167,567.00"', () => {
-        const actual = formatCurrency(currencyCode, amount);
-        const expected = '$498,167,567.00';
+        const expected = '$3,817,365,638.16';
 
         expect(actual).toBe(expected);
       });

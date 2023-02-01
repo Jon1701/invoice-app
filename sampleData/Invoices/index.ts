@@ -36,19 +36,19 @@ const originalData: Array<Invoice> = [
       {
         id: 'invoiceitem_1a881a28d41345059705ea73209a3447',
         description: 'Self Sealing Stem Bolt',
-        unitPrice: 36.18,
+        unitPrice: 3618,
         quantity: 5,
       },
       {
         id: 'invoiceitem_68450b8e-8276-4dc7-b720-91b07fadec85',
         description: 'Reverse Ratcheting Router',
-        unitPrice: 4.32,
+        unitPrice: 432,
         quantity: 10,
       },
       {
         id: 'invoiceitem_60e546e905b2422ba945ca7911fe7f50',
         description: 'Gold-pressed Latinum',
-        unitPrice: 12.36,
+        unitPrice: 1236,
         quantity: 88,
       },
       {
@@ -123,26 +123,26 @@ const originalData: Array<Invoice> = [
       {
         id: 'invoiceitem_0422e201d4514d1b912ba74ef3860e14',
         description: 'Tricorder',
-        unitPrice: 3617.12,
+        unitPrice: 361712,
         quantity: 277,
       },
       {
         id: 'invoiceitem_8bf64b9dafb94a3a9b2ed741c1e64cfe',
         description: 'Medical Tricorder',
-        unitPrice: 5.84,
+        unitPrice: 584,
         quantity: 3693,
       },
       {
         id: 'invoiceitem_6b2ec443bdde405eb735e2cbee65a361',
         description: 'Tribble',
-        unitPrice: 7.9,
+        unitPrice: 79,
         quantity: 363,
       },
       {
         id: 'invoiceitem_1deee6c0df3c4a058f717bea813a2c0b',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at consectetur lorem donec. Egestas sed tempus urna et pharetra pharetra massa. Bibendum enim facilisis gravida neque convallis a cras. Nunc aliquet bibendum enim facilisis gravida neque convallis. Lacus vestibulum sed arcu non odio euismod lacinia at. Varius sit amet mattis vulputate. Orci dapibus ultrices in iaculis. A erat nam at lectus urna duis convallis convallis. Vel eros donec ac odio tempor orci dapibus ultrices. Metus vulputate eu scelerisque felis imperdiet proin. Dictum non consectetur a erat nam at lectus urna. Dictum sit amet justo donec enim diam vulputate ut pharetra.',
-        unitPrice: 25929578.3,
+        unitPrice: 259295783,
         quantity: 346234,
       },
     ],
