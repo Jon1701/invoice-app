@@ -62,6 +62,11 @@ const StyledInput = styled(CurrencyFormat)`
 
 interface Props {
   /**
+   * Unique ID.
+   */
+  id?: string;
+
+  /**
    * Currency code.
    */
   currency: Currency;
@@ -98,6 +103,7 @@ interface Props {
 }
 
 const InputCurrency: React.FC<Props> = ({
+  id,
   currency,
   rawIntegerValue,
   setRawIntegerValue,
@@ -145,6 +151,7 @@ const InputCurrency: React.FC<Props> = ({
     <Container hasErrors={hasErrors} disabled={disabled} readOnly={readOnly}>
       <ContainerSymbol>{currencyInfo[currency].prefix}</ContainerSymbol>
       <StyledInput
+        id={id}
         value={toDecimal(d)}
         displayType="input"
         type="text"
