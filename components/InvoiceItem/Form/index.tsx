@@ -87,12 +87,12 @@ export interface Props {
   /**
    * Indicates if the field is disabled.
    */
-  disabled: boolean;
+  disabled?: boolean;
 
   /**
    * Indicates if the field is read-only.
    */
-  readOnly: boolean;
+  readOnly?: boolean;
 }
 
 /**
