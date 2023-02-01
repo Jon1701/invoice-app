@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
+import { DisplayFormattedCurrency } from '@components/Currency/DisplayFormatted';
 import { Button, Shape, Variant, ColorScheme } from '@components/Button';
 import { Table, RowGroup, Row, Heading, Cell } from '@components/Table/Mobile';
 import { InvoiceItem } from '@appTypes/index';
@@ -12,7 +13,7 @@ import { DisplayInvoiceItemsProps } from '.';
  * Displays a table of Invoice Items (Mobile layout).
  */
 const MobileInvoiceItems: React.FC<DisplayInvoiceItemsProps> = ({
-  currency,
+  currencyCode,
   items,
 }) => {
   return (
@@ -33,7 +34,10 @@ const MobileInvoiceItems: React.FC<DisplayInvoiceItemsProps> = ({
             <Row>
               <Heading>Unit Price</Heading>
               <Cell>
-                {currency} {unitPrice}
+                <DisplayFormattedCurrency
+                  currencyCode={currencyCode}
+                  rawIntegerValue={unitPrice}
+                />
               </Cell>
             </Row>
             <Row>

@@ -1,4 +1,4 @@
-import { Currency, Invoice, InvoiceStatus } from '@appTypes/index';
+import { CurrencyCode, Invoice, InvoiceStatus } from '@appTypes/index';
 import calculateInvoiceTotalFromItems from '@utils/invoices/calculateInvoiceTotalFromItems';
 
 // Original Invoice data with placeholder calculated values to satisfy interface
@@ -7,7 +7,7 @@ const originalData: Array<Invoice> = [
   {
     id: '1',
     amount: { total: 0 },
-    currency: Currency.CAD,
+    currencyCode: CurrencyCode.CAD,
     status: InvoiceStatus.Draft,
     biller: {
       name: 'Jonathan Archer',
@@ -93,7 +93,7 @@ const originalData: Array<Invoice> = [
   {
     id: '2',
     amount: { total: 0 },
-    currency: Currency.USD,
+    currencyCode: CurrencyCode.USD,
     status: InvoiceStatus.Pending,
     biller: {
       name: 'Hikaru Sulu',
@@ -150,7 +150,7 @@ const originalData: Array<Invoice> = [
   {
     id: '3',
     amount: { total: 0 },
-    currency: Currency.USD,
+    currencyCode: CurrencyCode.USD,
     status: InvoiceStatus.Pending,
     biller: {
       name: 'Jean-Luc Picard',
@@ -187,7 +187,7 @@ const originalData: Array<Invoice> = [
   {
     id: '4',
     amount: { total: 0 },
-    currency: Currency.CAD,
+    currencyCode: CurrencyCode.CAD,
     status: InvoiceStatus.Paid,
     biller: {
       name: 'William T. Riker',

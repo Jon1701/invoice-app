@@ -12,6 +12,7 @@ import {
 } from '@components/Table/Desktop';
 import { InvoiceItem } from '@appTypes/index';
 import { Button, Shape, Variant, ColorScheme } from '@components/Button';
+import { DisplayFormattedCurrency } from '@components/Currency/DisplayFormatted';
 
 import { DisplayInvoiceItemsProps } from '.';
 
@@ -19,7 +20,7 @@ import { DisplayInvoiceItemsProps } from '.';
  * Displays a table of Invoice Items (Desktop layout).
  */
 const DesktopInvoiceItems: React.FC<DisplayInvoiceItemsProps> = ({
-  currency,
+  currencyCode,
   items,
 }) => {
   return (
@@ -40,7 +41,10 @@ const DesktopInvoiceItems: React.FC<DisplayInvoiceItemsProps> = ({
             <Row key={id}>
               <Cell style={{ textAlign: 'left' }}>{quantity}</Cell>
               <Cell>
-                {currency} {unitPrice}
+                <DisplayFormattedCurrency
+                  currencyCode={currencyCode}
+                  rawIntegerValue={unitPrice}
+                />
               </Cell>
               <Cell>{description}</Cell>
               <Cell style={{ textAlign: 'right' }}>

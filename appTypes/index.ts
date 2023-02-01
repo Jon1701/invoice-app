@@ -10,7 +10,7 @@ export enum InvoiceStatus {
 /**
  * All supported Currencies.
  */
-export enum Currency {
+export enum CurrencyCode {
   CAD = 'CAD',
   USD = 'USD',
 }
@@ -127,7 +127,7 @@ export interface Invoice {
   /**
    * Currency code.
    */
-  currency: Currency;
+  currencyCode: CurrencyCode;
 
   /**
    * Status.

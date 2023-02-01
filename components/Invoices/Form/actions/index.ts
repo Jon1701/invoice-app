@@ -1,11 +1,16 @@
-import { Invoice, InvoiceItem, InvoiceStatus, Currency } from '@appTypes/index';
+import {
+  Invoice,
+  InvoiceItem,
+  InvoiceStatus,
+  CurrencyCode,
+} from '@appTypes/index';
 
 /**
  * Action types associated with a reducer.
  */
 export enum ActionTypeEnums {
   SetInvoice = 'SET_INVOICE',
-  SetCurrency = 'SET_CURRENCY',
+  SetCurrencyCode = 'SET_CURRENCY_CODE',
   SetInvoiceStatus = 'SET_INVOICE_STATUS',
   SetBillerName = 'SET_BILLER_NAME',
   SetBillerEmail = 'SET_BILLER_EMAIL',
@@ -77,8 +82,10 @@ export const setInvoice = (payload: Invoice): ActionCreator<Invoice> => ({
  *
  * @param payload Currency Code.
  */
-export const setCurrency = (payload: Currency): ActionCreator<Currency> => ({
-  type: ActionTypeEnums.SetCurrency,
+export const setCurrencyCode = (
+  payload: CurrencyCode
+): ActionCreator<CurrencyCode> => ({
+  type: ActionTypeEnums.SetCurrencyCode,
   payload,
 });
 
@@ -336,7 +343,7 @@ export type Action =
   | ActionCreator<number>
   | ActionCreator<string>
   | ActionCreator<Invoice>
-  | ActionCreator<Currency>
+  | ActionCreator<CurrencyCode>
   | ActionCreator<InvoiceStatus>
   | ActionCreator<InvoiceItem>
   | ActionCreator<InvoiceItemQuantityPayload>

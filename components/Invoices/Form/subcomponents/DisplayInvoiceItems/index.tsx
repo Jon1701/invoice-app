@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { InvoiceItem } from '@appTypes/index';
+import { InvoiceItem, CurrencyCode } from '@appTypes/index';
 import useGetDeviceType, { DeviceTypes } from '@hooks/useGetDeviceType';
 
 import Desktop from './Desktop';
@@ -13,7 +13,7 @@ export interface DisplayInvoiceItemsProps {
   /**
    * Currency code.
    */
-  currency: string;
+  currencyCode: CurrencyCode;
 
   /**
    * Array of Invoice Items.
@@ -25,17 +25,17 @@ export interface DisplayInvoiceItemsProps {
  * Displays a table of Invoice Items.
  */
 const DisplayInvoiceItems: React.FC<DisplayInvoiceItemsProps> = ({
-  currency,
+  currencyCode,
   items,
 }) => {
   const deviceType = useGetDeviceType();
 
   switch (deviceType) {
     case DeviceTypes.Mobile:
-      return <Mobile currency={currency} items={items} />;
+      return <Mobile currencyCode={currencyCode} items={items} />;
 
     default:
-      return <Desktop currency={currency} items={items} />;
+      return <Desktop currencyCode={currencyCode} items={items} />;
   }
 };
 

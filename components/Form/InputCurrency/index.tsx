@@ -7,8 +7,8 @@ import CurrencyFormat, {
   Values as OnValueChangeParameters,
 } from 'react-currency-format';
 
-import { Currency } from '@appTypes/index';
-import getDineroCurrency from '@utils/currency/getDineroCurrency';
+import { CurrencyCode } from '@appTypes/index';
+import getDineroCurrencyInfo from '@utils/currency/getDineroCurrencyInfo';
 
 import {
   Container,
@@ -17,12 +17,12 @@ import {
 } from '../common/styles';
 
 const currencyInfo = {
-  [Currency.CAD]: {
+  [CurrencyCode.CAD]: {
     base: 10,
     exponent: 2,
     prefix: '$',
   },
-  [Currency.USD]: {
+  [CurrencyCode.USD]: {
     base: 10,
     exponent: 2,
     prefix: '$',
@@ -64,7 +64,7 @@ interface Props {
   /**
    * Currency code.
    */
-  currency: Currency;
+  currencyCode: CurrencyCode;
 
   /**
    * Amount (as an integer).
@@ -99,7 +99,7 @@ interface Props {
 
 const InputCurrency: React.FC<Props> = ({
   id,
-  currency,
+  currencyCode,
   rawIntegerValue,
   setRawIntegerValue,
   errorMessages,
@@ -113,7 +113,7 @@ const InputCurrency: React.FC<Props> = ({
   // Create Dinero object.
   const d = dinero({
     amount: rawIntegerValue,
-    currency: getDineroCurrency(currency),
+    currency: getDineroCurrencyInfo(currencyCode),
   });
 
   /**
@@ -142,9 +142,11 @@ const InputCurrency: React.FC<Props> = ({
     }
   };
 
+  const { prefix, exponent } = currencyInfo[currencyCode];
+
   return (
     <Container hasErrors={hasErrors} disabled={disabled} readOnly={readOnly}>
-      <ContainerSymbol>{currencyInfo[currency].prefix}</ContainerSymbol>
+      <ContainerSymbol>{prefix}</ContainerSymbol>
       <StyledInput
         id={id}
         value={toDecimal(d)}
@@ -154,7 +156,7 @@ const InputCurrency: React.FC<Props> = ({
         onBlur={handleOnBlur}
         fixedDecimalScale={true}
         thousandSeparator=","
-        decimalScale={currencyInfo[currency].exponent}
+        decimalScale={exponent}
         allowNegative={false}
         disabled={disabled}
         readOnly={readOnly}

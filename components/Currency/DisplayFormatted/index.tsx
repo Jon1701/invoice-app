@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Currency } from '@appTypes/index';
+import { CurrencyCode } from '@appTypes/index';
 import formatCurrency from '@utils/currency/formatCurrency';
 
 interface Props {
@@ -12,12 +12,12 @@ interface Props {
   /**
    * Currency code.
    */
-  currencyCode: Currency;
+  currencyCode: CurrencyCode;
 
   /**
    * Amount to be formatted.
    */
-  amount: number;
+  rawIntegerValue: number;
 }
 
 /**
@@ -26,9 +26,11 @@ interface Props {
 export const DisplayFormattedCurrency: React.FC<Props> = ({
   className,
   currencyCode,
-  amount,
+  rawIntegerValue,
 }: Props) => {
   return (
-    <span className={className}>{formatCurrency(currencyCode, amount)}</span>
+    <span className={className}>
+      {formatCurrency(currencyCode, rawIntegerValue)}
+    </span>
   );
 };

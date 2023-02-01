@@ -1,11 +1,11 @@
 import { describe, expect, test } from '@jest/globals';
 
 import { sampleInvoices } from '@sampleData/Invoices';
-import { Currency, Invoice, InvoiceStatus } from '@appTypes/index';
+import { CurrencyCode, Invoice, InvoiceStatus } from '@appTypes/index';
 import deepClone from '@utils/deepClone';
 import {
   setInvoice,
-  setCurrency,
+  setCurrencyCode,
   setInvoiceStatus,
   setBillerName,
   setBillerEmail,
@@ -83,14 +83,15 @@ describe('invoiceReducer()', () => {
       const initialState: Invoice = deepClone(sampleInvoices[0]);
 
       test('should return the Invoice with just the Currency field updated', () => {
-        const currency = Currency.USD;
+        const currencyCode = CurrencyCode.USD;
 
         // Manually set new Currency.
         const expected: Invoice = deepClone(initialState);
-        expected.currency = currency;
+        expected.currencyCode = currencyCode;
 
         // Modify Currency using Action.
-        const payload: ActionCreator<Currency> = setCurrency(currency);
+        const payload: ActionCreator<CurrencyCode> =
+          setCurrencyCode(currencyCode);
         const actual: Invoice = invoiceReducer(initialState, payload);
 
         // Check if Invoices match.
@@ -102,14 +103,15 @@ describe('invoiceReducer()', () => {
       const initialState: Invoice = deepClone(blankInvoice);
 
       test('should return the Invoice with just the Currency field updated', () => {
-        const currency = Currency.USD;
+        const currencyCode = CurrencyCode.USD;
 
         // Manually set new Currency.
         const expected: Invoice = deepClone(initialState);
-        expected.currency = currency;
+        expected.currencyCode = currencyCode;
 
         // Modify Currency using Action.
-        const payload: ActionCreator<Currency> = setCurrency(currency);
+        const payload: ActionCreator<CurrencyCode> =
+          setCurrencyCode(currencyCode);
         const actual: Invoice = invoiceReducer(initialState, payload);
 
         // Check if Invoices match.

@@ -1,12 +1,12 @@
 import { describe, test, expect } from '@jest/globals';
 
-import { Currency } from '@appTypes/index';
+import { CurrencyCode } from '@appTypes/index';
 
 import formatCurrency from '../index';
 
 describe('formatCurrency()', () => {
   describe('with currencyCode = "USD"', () => {
-    const currencyCode: Currency = Currency.USD;
+    const currencyCode: CurrencyCode = CurrencyCode.USD;
 
     describe('with amount = 0', () => {
       const amount = 0;
@@ -65,7 +65,7 @@ describe('formatCurrency()', () => {
   });
 
   describe('with currencyCode = "CAD"', () => {
-    const currencyCode: Currency = Currency.CAD;
+    const currencyCode: CurrencyCode = CurrencyCode.CAD;
 
     describe('with amount = 0', () => {
       const amount = 0;

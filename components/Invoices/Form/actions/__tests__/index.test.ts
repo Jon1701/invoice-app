@@ -1,4 +1,4 @@
-import { Currency, Invoice, InvoiceStatus } from '@appTypes/index';
+import { CurrencyCode, Invoice, InvoiceStatus } from '@appTypes/index';
 import { describe, expect, test } from '@jest/globals';
 
 import { sampleInvoices } from '@sampleData/Invoices';
@@ -7,7 +7,7 @@ import {
   ActionCreator,
   ActionTypeEnums,
   setInvoice,
-  setCurrency,
+  setCurrencyCode,
   setInvoiceStatus,
   setBillerName,
   setBillerEmail,
@@ -49,14 +49,14 @@ describe('setInvoice()', () => {
   });
 });
 
-describe('setCurrency()', () => {
+describe('setCurrencyCode()', () => {
   test('should return the corresponding action', () => {
-    const currency: Currency = Currency.USD;
+    const currencyCode: CurrencyCode = CurrencyCode.USD;
 
-    const actual = setCurrency(currency);
-    const expected: ActionCreator<Currency> = {
-      type: ActionTypeEnums.SetCurrency,
-      payload: currency,
+    const actual = setCurrencyCode(currencyCode);
+    const expected: ActionCreator<CurrencyCode> = {
+      type: ActionTypeEnums.SetCurrencyCode,
+      payload: currencyCode,
     };
 
     expect(actual).toEqual(expected);

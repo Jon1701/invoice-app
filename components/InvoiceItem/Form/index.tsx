@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { breakpoints } from '@utils/breakpoints';
 import { Button, Shape, Variant, ColorScheme } from '@components/Button';
-import { InvoiceItem, Currency } from '@appTypes/index';
+import { InvoiceItem, CurrencyCode } from '@appTypes/index';
 import InputCurrency from '@components/Form/InputCurrency';
 import InputText from '@components/Form/InputText';
 import Label from '@components/Form/Label';
@@ -101,7 +101,7 @@ export interface Props {
   /**
    * Currency code.
    */
-  currency: Currency;
+  currencyCode: CurrencyCode;
 
   /**
    * Indicates if the field is disabled.
@@ -121,7 +121,7 @@ const InvoiceItemForm: React.FC<Props> = ({
   handleSubmit,
   formValues,
   dispatch,
-  currency,
+  currencyCode,
   disabled = false,
   readOnly = false,
 }) => {
@@ -155,7 +155,7 @@ const InvoiceItemForm: React.FC<Props> = ({
           </Label>
           <InputCurrency
             id="invoice-item-unit-price"
-            currency={currency}
+            currencyCode={currencyCode}
             rawIntegerValue={formValues.unitPrice}
             setRawIntegerValue={(v: number) => dispatch(setUnitPrice(v))}
             disabled={disabled}

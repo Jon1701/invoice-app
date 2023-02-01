@@ -1,8 +1,8 @@
 import { dinero, toUnits } from 'dinero.js';
 
-import { Currency } from '@appTypes/index';
+import { CurrencyCode } from '@appTypes/index';
 
-import getDineroCurrency from '../getDineroCurrency';
+import getDineroCurrencyInfo from '../getDineroCurrencyInfo';
 
 /**
  * Formats a given amount according to the given currency code.
@@ -12,12 +12,12 @@ import getDineroCurrency from '../getDineroCurrency';
  * @returns Formatted string.
  */
 const formatCurrency = (
-  currencyCode: Currency,
+  currencyCode: CurrencyCode,
   rawIntegerAmount: number
 ): string => {
   const d = dinero({
     amount: rawIntegerAmount,
-    currency: getDineroCurrency(currencyCode),
+    currency: getDineroCurrencyInfo(currencyCode),
   });
 
   // Split into major and minor currencies.

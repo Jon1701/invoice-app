@@ -3,7 +3,7 @@ import {
   Address,
   ContactInfo,
   InvoiceStatus,
-  Currency,
+  CurrencyCode,
   InvoiceAmounts,
   InvoiceItem,
 } from '@appTypes/index';
@@ -21,7 +21,7 @@ import generateUUID, { UUIDTypeEnums } from '@utils/generateUUID';
 export const blankInvoice: Invoice = {
   id: '',
   status: InvoiceStatus.Draft,
-  currency: Currency.USD,
+  currencyCode: CurrencyCode.USD,
   amount: { total: 0 } as InvoiceAmounts,
   biller: {
     name: '',
@@ -73,8 +73,8 @@ export const invoiceReducer = (state: Invoice, action: Action): Invoice => {
   const copy: Invoice = deepClone(state);
 
   switch (action.type) {
-    case ActionTypeEnums.SetCurrency:
-      copy.currency = action.payload as Currency;
+    case ActionTypeEnums.SetCurrencyCode:
+      copy.currencyCode = action.payload as CurrencyCode;
       break;
 
     case ActionTypeEnums.SetInvoiceStatus:

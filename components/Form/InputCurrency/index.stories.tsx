@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Currency } from '@appTypes/index';
+import { CurrencyCode } from '@appTypes/index';
 
 import InputCurrency from '.';
 
@@ -45,5 +45,5 @@ const Template: ComponentStory<typeof InputCurrency> = args => {
 
 export const Default = Template.bind({});
 Default.args = {
-  currency: Currency.CAD,
+  currencyCode: CurrencyCode.CAD,
 };

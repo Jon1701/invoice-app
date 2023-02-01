@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { InvoiceItem, Currency } from '@appTypes/index';
+import { InvoiceItem, CurrencyCode } from '@appTypes/index';
 import { sampleInvoices } from '@sampleData/Invoices';
 
 import InvoiceItemForm, {
@@ -13,9 +13,9 @@ import InvoiceItemForm, {
 export default {
   component: InvoiceItemForm,
   argTypes: {
-    currency: {
-      options: Object.keys(Currency),
-      mapping: Currency,
+    currencyCode: {
+      options: Object.keys(CurrencyCode),
+      mapping: CurrencyCode,
       control: {
         type: 'radio',
       },
@@ -51,5 +51,5 @@ const Template: ComponentStory<typeof InvoiceItemForm> = args => {
 export const Default = Template.bind({});
 Default.args = {
   formValues: sampleInvoices[0].items[0],
-  currency: Currency.CAD,
+  currencyCode: CurrencyCode.CAD,
 };

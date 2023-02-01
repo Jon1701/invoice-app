@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {
   Action,
-  setCurrency,
+  setCurrencyCode,
   setBillerName,
   setBillerEmail,
   setBillerAddressLine1,
@@ -23,7 +23,7 @@ import {
   addBlankInvoiceItem,
 } from '@components/Invoices/Form/actions';
 import { blankInvoice } from '@components/Invoices/Form';
-import { Invoice, Currency } from '@appTypes/index';
+import { Invoice, CurrencyCode } from '@appTypes/index';
 import { Button, ColorScheme, Shape, Variant } from '@components/Button';
 import { breakpoints } from '@utils/breakpoints';
 import Dropdown from '@components/Form/Dropdown';
@@ -165,24 +165,24 @@ export const InvoiceForm: React.FC<InvoiceFormProps<Action>> = ({
           <Dropdown
             id="currency-code"
             handleChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-              dispatch(setCurrency(e.target.value as Currency));
+              dispatch(setCurrencyCode(e.target.value as CurrencyCode));
             }}
-            value={formValues.currency}
+            value={formValues.currencyCode}
             disabled={disabled || readOnly}
             handleClearButtonClick={() =>
-              dispatch(setCurrency(blankInvoice.currency))
+              dispatch(setCurrencyCode(blankInvoice.currencyCode))
             }>
             <option disabled hidden>
               (Select one)
             </option>
-            <option value={Currency.CAD}>Canadian Dollar (CAD)</option>
-            <option value={Currency.USD}>United States Dollar (USD)</option>
+            <option value={CurrencyCode.CAD}>Canadian Dollar (CAD)</option>
+            <option value={CurrencyCode.USD}>United States Dollar (USD)</option>
           </Dropdown>
         </div>
 
         {formValues?.items.length > 0 ? (
           <DisplayInvoiceItems
-            currency={formValues.currency}
+            currencyCode={formValues.currencyCode}
             items={formValues.items}
           />
         ) : undefined}

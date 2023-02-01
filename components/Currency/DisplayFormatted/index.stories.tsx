@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Currency } from '@appTypes/index';
+import { CurrencyCode } from '@appTypes/index';
 
 import { DisplayFormattedCurrency } from '.';
 
@@ -14,6 +14,6 @@ const Template: ComponentStory<typeof DisplayFormattedCurrency> = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  currencyCode: Currency.CAD,
-  amount: 182367172618,
+  currencyCode: CurrencyCode.CAD,
+  rawIntegerValue: 182367172618,
 };

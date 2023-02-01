@@ -8,7 +8,7 @@ import {
   Row,
   Cell,
 } from '@components/Table/Desktop';
-import { DisplayFormattedCurrency } from '@components/Currency';
+import { DisplayFormattedCurrency } from '@components/Currency/DisplayFormatted';
 import { Invoice } from '@appTypes/index';
 import { StatusIndicator } from '@components/Invoices/StatusIndicator';
 
@@ -29,7 +29,7 @@ const Desktop: React.FC<ListInvoicesTableProps> = ({ invoices }) => {
       </Header>
       <Body>
         {invoices.map((item: Invoice) => {
-          const { id, status, client, currency, amount } = item;
+          const { id, status, client, currencyCode, amount } = item;
 
           return (
             <Row key={id}>
@@ -39,8 +39,8 @@ const Desktop: React.FC<ListInvoicesTableProps> = ({ invoices }) => {
               <Cell style={{ textAlign: 'center' }}>{client.name}</Cell>
               <Cell style={{ textAlign: 'right' }}>
                 <DisplayFormattedCurrency
-                  currencyCode={currency}
-                  amount={amount.total}
+                  currencyCode={currencyCode}
+                  rawIntegerValue={amount.total}
                 />
               </Cell>
             </Row>
