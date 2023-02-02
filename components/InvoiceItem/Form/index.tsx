@@ -118,15 +118,14 @@ const InvoiceItemForm: React.FC<Props> = ({
             type="text"
             value={String(formValues.quantity)}
             onChange={e => {
-              // Remove non-numeric characters.
-              const nonNumeric = e.target.value
-                .trim()
-                .replaceAll(patternNoDigits, '');
-
-              // Convert to number.
+              const value = e.target.value.trim() || '0';
+              const nonNumeric = value.replaceAll(patternNoDigits, '');
               const numeric = Number.parseInt(nonNumeric, 10);
 
               dispatch(setQuantity(numeric));
+            }}
+            handleClearButtonClick={() => {
+              dispatch(setQuantity(0));
             }}
             disabled={disabled}
             readOnly={readOnly}
