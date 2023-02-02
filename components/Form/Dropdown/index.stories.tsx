@@ -1,16 +1,47 @@
 import React, { useState } from 'react';
-
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { argTypes } from '@components/Form/common/styles.stories';
 
 import Dropdown from '.';
 
+const handleClearButtonClickMapping = {
+  'with Clear button function': () => {
+    alert('Clear button has been Clicked!');
+  },
+  'without Clear button function': undefined,
+};
+
+const hasErrorsMapping = {
+  'with errors': true,
+  'without errors': false,
+};
+
+const booleanMapping = { true: true, false: false };
+
 export default {
   component: Dropdown,
-  args: {
-    disabled: false,
+  argTypes: {
+    hasErrors: {
+      options: Object.keys(hasErrorsMapping),
+      mapping: hasErrorsMapping,
+      control: {
+        type: 'radio',
+      },
+    },
+    handleClearButtonClick: {
+      options: Object.keys(handleClearButtonClickMapping),
+      mapping: handleClearButtonClickMapping,
+      control: {
+        type: 'radio',
+      },
+    },
+    disabled: {
+      options: Object.keys(booleanMapping),
+      mapping: booleanMapping,
+      control: {
+        type: 'radio',
+      },
+    },
   },
-  argTypes,
 } as ComponentMeta<typeof Dropdown>;
 
 const Template: ComponentStory<typeof Dropdown> = args => {
@@ -36,7 +67,7 @@ const Template: ComponentStory<typeof Dropdown> = args => {
   return (
     <Dropdown
       value={value}
-      handleChange={handleChange}
+      onChange={handleChange}
       handleClearButtonClick={handleClearButtonClick}
       {...args}
     />

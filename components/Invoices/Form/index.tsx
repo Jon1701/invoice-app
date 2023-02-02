@@ -140,11 +140,11 @@ export const InvoiceForm: React.FC<InvoiceFormProps<Action>> = ({
 
         <div>
           <Label htmlFor="currency-code" isRequired>
-            Currency
+            Currency Code
           </Label>
           <Dropdown
             id="currency-code"
-            handleChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
               dispatch(setCurrencyCode(e.target.value as CurrencyCode));
             }}
             value={formValues.currencyCode}

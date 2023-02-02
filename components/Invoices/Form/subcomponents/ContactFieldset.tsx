@@ -259,14 +259,16 @@ const ContactFieldset: React.FC<Props<Action>> = ({
         <Dropdown
           id={`${idPrefix}-address-country`}
           value={contactInfo.address.country}
-          handleChange={e => {
+          onChange={e => {
             dispatch(setAddressCountry(e.target.value));
           }}
           handleClearButtonClick={() => {
             dispatch(setAddressCountry(''));
           }}
           disabled={disabled || readOnly}>
-          <option>(Select One)</option>
+          <option disabled hidden>
+            (Select One)
+          </option>
           <option value="Canada">Canada</option>
           <option value="United States">United States</option>
         </Dropdown>

@@ -2,14 +2,32 @@ import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { getUnixTime, sub, add } from 'date-fns';
 
-import { args, argTypes } from '@components/Form/common/styles.stories';
-
 import DateSelector from '.';
+
+const errorMappings = {
+  'with errors': ['this is an error'],
+  'without errors': undefined,
+};
 
 export default {
   component: DateSelector,
-  args,
-  argTypes,
+  args: {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    handleChange: () => {},
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    handleClearButtonClick: () => {},
+    disabled: false,
+    readOnly: false,
+  },
+  argTypes: {
+    errorMessages: {
+      options: Object.keys(errorMappings),
+      mapping: errorMappings,
+      control: {
+        type: 'radio',
+      },
+    },
+  },
 } as ComponentMeta<typeof DateSelector>;
 
 const Template: ComponentStory<typeof DateSelector> = args => {
