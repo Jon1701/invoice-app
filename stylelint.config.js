@@ -8,6 +8,7 @@ const config = {
   customSyntax: 'postcss-scss',
   rules: {
     'declaration-empty-line-before': null,
+    'value-keyword-case': null,
   },
 };
 
