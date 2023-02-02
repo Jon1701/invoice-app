@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import InputText from '../InputText';
+import Input from '@components/Form/Input';
 import Label from '.';
 
 export default {
@@ -11,7 +11,7 @@ export default {
 const Template: ComponentStory<typeof Label> = args => (
   <React.Fragment>
     <Label {...args} />
-    <InputText id={args.htmlFor} />
+    <Input id={args.htmlFor} type="text" />
   </React.Fragment>
 );
 
