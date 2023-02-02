@@ -128,6 +128,8 @@ const InvoiceItemForm: React.FC<Props> = ({
 
               dispatch(setQuantity(numeric));
             }}
+            disabled={disabled}
+            readOnly={readOnly}
           />
         </div>
 
@@ -155,6 +157,9 @@ const InvoiceItemForm: React.FC<Props> = ({
             type="text"
             value={formValues.description}
             onChange={e => dispatch(setDescription(e.target.value))}
+            disabled={disabled}
+            readOnly={readOnly}
+            handleClearButtonClick={() => dispatch(setDescription(''))}
           />
         </div>
       </Fieldset>

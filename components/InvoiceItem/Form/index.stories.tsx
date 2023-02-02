@@ -10,12 +10,28 @@ import InvoiceItemForm, {
   Action,
 } from '.';
 
+const booleanMapping = { true: true, false: false };
+
 export default {
   component: InvoiceItemForm,
   argTypes: {
     currencyCode: {
       options: Object.keys(CurrencyCode),
       mapping: CurrencyCode,
+      control: {
+        type: 'radio',
+      },
+    },
+    disabled: {
+      options: Object.keys(booleanMapping),
+      mapping: booleanMapping,
+      control: {
+        type: 'radio',
+      },
+    },
+    readOnly: {
+      options: Object.keys(booleanMapping),
+      mapping: booleanMapping,
       control: {
         type: 'radio',
       },
