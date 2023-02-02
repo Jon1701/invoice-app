@@ -49,6 +49,13 @@ const Template: ComponentStory<typeof InvoiceForm> = args => {
     (state: Invoice, action: Action) => Invoice
   >(invoiceReducer, blankInvoice);
 
+  // Submits the form.
+  const handleFormSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    console.log(formValues);
+  };
+
   // Clears the form.
   const handleReset = () => {
     dispatch(setInvoice(blankInvoice));
@@ -62,6 +69,7 @@ const Template: ComponentStory<typeof InvoiceForm> = args => {
   return (
     <InvoiceForm
       {...args}
+      handleSubmit={handleFormSubmit}
       formValues={formValues}
       dispatch={dispatch}
       handleReset={handleReset}

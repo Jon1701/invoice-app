@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Action, ActionCreator } from '@components/Invoices/Form/actions';
+import { breakpoints } from '@utils/breakpoints';
 import { ContactInfo } from '@appTypes/index';
 import Dropdown from '@components/Form/Dropdown';
-import InputText from '@components/Form/InputText';
+import Input from '@components/Form/Input';
 import Label from '@components/Form/Label';
-import { breakpoints } from '@utils/breakpoints';
 
 import { Legend } from './styles';
 
@@ -125,10 +125,11 @@ const ContactFieldset: React.FC<Props<Action>> = ({
         <Label htmlFor={`${idPrefix}-address-name`} isRequired>
           Name
         </Label>
-        <InputText
+        <Input
           id={`${idPrefix}-address-name`}
+          type="text"
           value={contactInfo.name}
-          handleChange={e => {
+          onChange={e => {
             dispatch(setName(e.target.value));
           }}
           handleClearButtonClick={() => {
@@ -143,10 +144,11 @@ const ContactFieldset: React.FC<Props<Action>> = ({
         <Label htmlFor={`${idPrefix}-address-email`} isRequired>
           Email Address
         </Label>
-        <InputText
+        <Input
           id={`${idPrefix}-address-email`}
+          type="email"
           value={contactInfo.email}
-          handleChange={e => {
+          onChange={e => {
             dispatch(setEmail(e.target.value));
           }}
           handleClearButtonClick={() => {
@@ -161,10 +163,11 @@ const ContactFieldset: React.FC<Props<Action>> = ({
         <Label htmlFor={`${idPrefix}-address-line1`} isRequired>
           Line 1
         </Label>
-        <InputText
+        <Input
           id={`${idPrefix}-address-line1`}
+          type="text"
           value={contactInfo.address.line1}
-          handleChange={e => {
+          onChange={e => {
             dispatch(setAddressLine1(e.target.value));
           }}
           handleClearButtonClick={() => {
@@ -177,10 +180,11 @@ const ContactFieldset: React.FC<Props<Action>> = ({
 
       <div>
         <Label htmlFor={`${idPrefix}-address-line2`}>Line 2</Label>
-        <InputText
+        <Input
           id={`${idPrefix}-address-line2`}
+          type="text"
           value={contactInfo.address?.line2}
-          handleChange={e => {
+          onChange={e => {
             dispatch(setAddressLine2(e.target.value));
           }}
           handleClearButtonClick={() => {
@@ -195,10 +199,11 @@ const ContactFieldset: React.FC<Props<Action>> = ({
         <Label htmlFor={`${idPrefix}-address-city`} isRequired>
           City
         </Label>
-        <InputText
+        <Input
           id={`${idPrefix}-address-city`}
+          type="text"
           value={contactInfo.address.city}
-          handleChange={e => {
+          onChange={e => {
             dispatch(setAddressCity(e.target.value));
           }}
           handleClearButtonClick={() => {
@@ -213,10 +218,11 @@ const ContactFieldset: React.FC<Props<Action>> = ({
         <Label htmlFor={`${idPrefix}-address-state`} isRequired>
           State
         </Label>
-        <InputText
+        <Input
           id={`${idPrefix}-address-state`}
+          type="text"
           value={contactInfo.address.state}
-          handleChange={e => {
+          onChange={e => {
             dispatch(setAddressState(e.target.value));
           }}
           handleClearButtonClick={() => {
@@ -231,10 +237,11 @@ const ContactFieldset: React.FC<Props<Action>> = ({
         <Label htmlFor={`${idPrefix}-address-postal-code`} isRequired>
           ZIP/Postal Code
         </Label>
-        <InputText
+        <Input
           id={`${idPrefix}-address-postal-code`}
+          type="text"
           value={contactInfo.address.postalCode}
-          handleChange={e => {
+          onChange={e => {
             dispatch(setAddressPostalCode(e.target.value));
           }}
           handleClearButtonClick={() => {

@@ -6,7 +6,7 @@ import { Button, Shape, Variant, ColorScheme } from '@components/Button';
 import { InvoiceItem, CurrencyCode } from '@appTypes/index';
 import ContainerSubmitResetButtons from '@components/Form/ContainerSubmitResetButtons';
 import InputCurrency from '@components/Form/InputCurrency';
-import InputText from '@components/Form/InputText';
+import Input from '@components/Form/Input';
 import Label from '@components/Form/Label';
 
 import {
@@ -113,10 +113,11 @@ const InvoiceItemForm: React.FC<Props> = ({
           <Label htmlFor="invoice-item-quantity" isRequired>
             Quantity
           </Label>
-          <InputText
+          <Input
             id="invoice-item-quantity"
+            type="text"
             value={String(formValues.quantity)}
-            handleChange={e => {
+            onChange={e => {
               // Remove non-numeric characters.
               const nonNumeric = e.target.value
                 .trim()
@@ -149,10 +150,11 @@ const InvoiceItemForm: React.FC<Props> = ({
           <Label htmlFor="invoice-item-description" isRequired>
             Description
           </Label>
-          <InputText
+          <Input
             id="invoice-item-description"
+            type="text"
             value={formValues.description}
-            handleChange={e => dispatch(setDescription(e.target.value))}
+            onChange={e => dispatch(setDescription(e.target.value))}
           />
         </div>
       </Fieldset>
