@@ -1,44 +1,35 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import {
+  disabledArgType,
+  readOnlyArgType,
+  errorMessagesArgType,
+  onClickButtonArgType,
+} from '@storybook/args';
+
 import { CurrencyCode } from '@appTypes/index';
 
 import InputCurrency from '.';
 
-const errorMessagesMapping = {
-  'with errors': ['unknown error', 'invalid value'],
-  'without errors': undefined,
-};
-
 export default {
   component: InputCurrency,
   argTypes: {
-    errorMessages: {
-      options: Object.keys(errorMessagesMapping),
-      mapping: errorMessagesMapping,
-      control: {
-        type: 'radio',
-      },
-    },
+    errorMessages: errorMessagesArgType,
+    disabled: disabledArgType,
+    readOnly: readOnlyArgType,
+    handleClearButtonClick: onClickButtonArgType,
   },
 } as ComponentMeta<typeof InputCurrency>;
 
 const Template: ComponentStory<typeof InputCurrency> = args => {
   const [value, setValue] = useState<number>(0);
 
-  /**
-   * Clears the field.
-   */
-  const handleClearButtonClick = () => {
-    setValue(0);
-  };
-
   return (
     <InputCurrency
       {...args}
       rawIntegerValue={value}
       setRawIntegerValue={setValue}
-      handleClearButtonClick={handleClearButtonClick}
     />
   );
 };

@@ -2,31 +2,22 @@ import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { getUnixTime, sub, add } from 'date-fns';
 
-import DateSelector from '.';
+import {
+  disabledArgType,
+  readOnlyArgType,
+  errorMessagesArgType,
+  onClickButtonArgType,
+} from '@storybook/args';
 
-const errorMappings = {
-  'with errors': ['this is an error'],
-  'without errors': undefined,
-};
+import DateSelector from '.';
 
 export default {
   component: DateSelector,
-  args: {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    handleChange: () => {},
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    handleClearButtonClick: () => {},
-    disabled: false,
-    readOnly: false,
-  },
   argTypes: {
-    errorMessages: {
-      options: Object.keys(errorMappings),
-      mapping: errorMappings,
-      control: {
-        type: 'radio',
-      },
-    },
+    errorMessages: errorMessagesArgType,
+    disabled: disabledArgType,
+    readOnly: readOnlyArgType,
+    handleClearButtonClick: onClickButtonArgType,
   },
 } as ComponentMeta<typeof DateSelector>;
 
@@ -41,20 +32,8 @@ const Template: ComponentStory<typeof DateSelector> = args => {
     setValue(ts);
   };
 
-  /**
-   * Clears the tiemstamp.
-   */
-  const handleClearButtonClick = () => {
-    setTimestamp(undefined);
-  };
-
   return (
-    <DateSelector
-      {...args}
-      timestamp={value}
-      setTimestamp={setTimestamp}
-      handleClearButtonClick={handleClearButtonClick}
-    />
+    <DateSelector {...args} timestamp={value} setTimestamp={setTimestamp} />
   );
 };
 

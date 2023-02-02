@@ -3,44 +3,18 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import Dropdown from '.';
 
-const handleClearButtonClickMapping = {
-  'with Clear button function': () => {
-    alert('Clear button has been Clicked!');
-  },
-  'without Clear button function': undefined,
-};
-
-const hasErrorsMapping = {
-  'with errors': true,
-  'without errors': false,
-};
-
-const booleanMapping = { true: true, false: false };
+import {
+  disabledArgType,
+  errorMessagesArgType,
+  onClickButtonArgType,
+} from '@storybook/args';
 
 export default {
   component: Dropdown,
   argTypes: {
-    hasErrors: {
-      options: Object.keys(hasErrorsMapping),
-      mapping: hasErrorsMapping,
-      control: {
-        type: 'radio',
-      },
-    },
-    handleClearButtonClick: {
-      options: Object.keys(handleClearButtonClickMapping),
-      mapping: handleClearButtonClickMapping,
-      control: {
-        type: 'radio',
-      },
-    },
-    disabled: {
-      options: Object.keys(booleanMapping),
-      mapping: booleanMapping,
-      control: {
-        type: 'radio',
-      },
-    },
+    errorMessages: errorMessagesArgType,
+    disabled: disabledArgType,
+    handleClearButtonClick: onClickButtonArgType,
   },
 } as ComponentMeta<typeof Dropdown>;
 
@@ -57,21 +31,7 @@ const Template: ComponentStory<typeof Dropdown> = args => {
     setValue(e.target.value);
   };
 
-  /**
-   * Clears the selected value.
-   */
-  const handleClearButtonClick = () => {
-    setValue('');
-  };
-
-  return (
-    <Dropdown
-      value={value}
-      onChange={handleChange}
-      handleClearButtonClick={handleClearButtonClick}
-      {...args}
-    />
-  );
+  return <Dropdown value={value} onChange={handleChange} {...args} />;
 };
 
 export const Default = Template.bind({});

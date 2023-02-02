@@ -22,6 +22,7 @@
       "@layouts/*": ["layouts/*"],
       "@pages/*": ["pages/*"],
       "@sampleData/*": ["sampleData/*"],
+      "@storybook/*": [".storybook/*"],
       "@utils/*": ["utils/*"]
     }
   },
