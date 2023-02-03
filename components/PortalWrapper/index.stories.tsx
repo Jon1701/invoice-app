@@ -10,16 +10,6 @@ const fillerText =
 // Repeat the filler text.
 const arrayFillerText = new Array(20).fill(fillerText);
 
-// Selectable colours for the background colour.
-const backgroundColorMapping = {
-  'Solid Colour 1': '#AF3E4D',
-  'Solid Colour 2': '#533A71',
-  'Solid Colour 3': '#00A6ED',
-  'Translucent Colour 1': 'rgb(96 191 123 / 0.25)',
-  'Translucent Colour 2': 'rgb(66 0 57 / 0.5)',
-  Transparent: 'transparent',
-};
-
 // Selectable functions for the background onClick function.
 const backgroundOnClickMapping = {
   'With Background onClick': () => {
@@ -52,13 +42,6 @@ const childrenMapping = {
 };
 
 const argTypes = {
-  backgroundColor: {
-    options: Object.keys(backgroundColorMapping),
-    mapping: backgroundColorMapping,
-    control: {
-      type: 'radio',
-    },
-  },
   backgroundOnClick: {
     options: Object.keys(backgroundOnClickMapping),
     mapping: backgroundOnClickMapping,
@@ -93,7 +76,6 @@ const Template: ComponentStory<typeof PortalWrapper> = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  backgroundColor: backgroundColorMapping['Translucent Colour 2'],
   children: childrenMapping['Lorem Ipsum with Button'],
   backgroundOnClick: backgroundOnClickMapping['With Background onClick'],
 };

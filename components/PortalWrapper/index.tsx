@@ -30,14 +30,10 @@ const Container = styled.div<NumChildren>`
   z-index: ${props => props.numChildren + ZIndexOffsets.Container};
 `;
 
-interface BackgroundProps {
-  backgroundColor?: string;
-}
-
 /**
  * Container for the background colour.
  */
-const Background = styled.div<NumChildren & BackgroundProps>`
+const Background = styled.div<NumChildren>`
   position: absolute;
   top: 0;
   left: 0;
@@ -47,7 +43,7 @@ const Background = styled.div<NumChildren & BackgroundProps>`
   max-width: 100vw;
   max-height: 100vh;
 
-  background-color: ${props => props.backgroundColor || 'rgb(0 0 0 / 0.8)'};
+  background-color: rgb(0 0 0 / 80%);
   z-index: ${props => props.numChildren + ZIndexOffsets.Background};
 `;
 
@@ -67,11 +63,6 @@ const Content = styled.div<NumChildren>`
 
 export interface PortalWrapperProps {
   /**
-   * Background colour.
-   */
-  backgroundColor?: string;
-
-  /**
    * Background click handler function.
    */
   backgroundOnClick?: React.MouseEventHandler<HTMLDivElement>;
@@ -86,7 +77,6 @@ export interface PortalWrapperProps {
  * Wraps a component within a React Portal.
  */
 const PortalWrapper: React.FC<PortalWrapperProps> = ({
-  backgroundColor,
   backgroundOnClick,
   children,
 }) => {
@@ -109,11 +99,7 @@ const PortalWrapper: React.FC<PortalWrapperProps> = ({
 
     return ReactDOM.createPortal(
       <Container numChildren={numChildren}>
-        <Background
-          backgroundColor={backgroundColor}
-          numChildren={numChildren}
-          onClick={backgroundOnClick}
-        />
+        <Background numChildren={numChildren} onClick={backgroundOnClick} />
         <Content numChildren={numChildren}>{children}</Content>
       </Container>,
       targetNode

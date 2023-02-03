@@ -81,15 +81,12 @@ const StyledButton = styled.button`
  */
 const ModalWrapper: React.FC<ModalWrapperProps> = ({
   title,
-  backgroundColor,
   backgroundOnClick,
   handleCloseButtonClick,
   children,
 }) => {
   return (
-    <PortalWrapper
-      backgroundColor={backgroundColor}
-      backgroundOnClick={backgroundOnClick}>
+    <PortalWrapper backgroundOnClick={backgroundOnClick}>
       <Container>
         <Title>
           <span style={{ textAlign: 'left' }}>{title}</span>
