@@ -92,7 +92,7 @@ export interface InvoiceItem {
   /**
    * Unique identifier.
    */
-  id?: string;
+  id: string;
 
   /**
    * Item Description.

@@ -7,7 +7,7 @@ import {
   errorMessagesArgType,
   onClickButtonArgType,
   placeholderArgType,
-} from '@storybook/args';
+} from '@storybookRoot/args';
 
 import Input from '.';
 

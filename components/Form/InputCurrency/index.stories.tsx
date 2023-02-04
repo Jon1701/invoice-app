@@ -6,9 +6,9 @@ import {
   readOnlyArgType,
   errorMessagesArgType,
   onClickButtonArgType,
-} from '@storybook/args';
-
-import { CurrencyCode } from '@appTypes/index';
+  currencyCodeArgType,
+  currencyCodeMapping,
+} from '@storybookRoot/args';
 
 import InputCurrency from '.';
 
@@ -19,6 +19,7 @@ export default {
     disabled: disabledArgType,
     readOnly: readOnlyArgType,
     handleClearButtonClick: onClickButtonArgType,
+    currencyCode: currencyCodeArgType,
   },
 } as ComponentMeta<typeof InputCurrency>;
 
@@ -36,5 +37,5 @@ const Template: ComponentStory<typeof InputCurrency> = args => {
 
 export const Default = Template.bind({});
 Default.args = {
-  currencyCode: CurrencyCode.CAD,
+  currencyCode: currencyCodeMapping.CAD,
 };

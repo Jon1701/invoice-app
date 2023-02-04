@@ -7,7 +7,7 @@ import {
   readOnlyArgType,
   errorMessagesArgType,
   onClickButtonArgType,
-} from '@storybook/args';
+} from '@storybookRoot/args';
 
 import DateSelector from '.';
 

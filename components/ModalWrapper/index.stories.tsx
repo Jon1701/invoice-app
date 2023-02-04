@@ -1,15 +1,9 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import ModalWrapper from '.';
+import { modalTitleArgType, onClickButtonMapping } from '@storybookRoot/args';
 
-// Selectable titles.
-const titleMapping = {
-  'Short-length Title': 'Hello World',
-  'Medium-length Title': 'Lorem ipsum dolor sit amet consectetur.',
-  'Long title':
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quod culpa eaque repudiandae eveniet quibusdam numquam error quasi cumque quam omnis dicta, veritatis reprehenderit porro possimus quis ex asperiores in.',
-};
+import ModalWrapper from '.';
 
 // Filler text to simulate page content.
 const fillerText =
@@ -17,14 +11,6 @@ const fillerText =
 
 // Repeat the filler text.
 const arrayFillerText = new Array(20).fill(fillerText);
-
-// Selectable functions for the background onClick function.
-const backgroundOnClickMapping = {
-  'Display alert': () => {
-    window.alert('The background has been clicked!');
-  },
-  'No Alert': undefined,
-};
 
 // Selectable Portal content.
 const childrenMapping = {
@@ -66,20 +52,8 @@ const childrenMapping = {
 };
 
 const argTypes = {
-  title: {
-    options: Object.keys(titleMapping),
-    mapping: titleMapping,
-    control: {
-      type: 'radio',
-    },
-  },
-  backgroundOnClick: {
-    options: Object.keys(backgroundOnClickMapping),
-    mapping: backgroundOnClickMapping,
-    control: {
-      type: 'radio',
-    },
-  },
+  title: modalTitleArgType,
+  backgroundOnClick: onClickButtonMapping,
   children: {
     options: Object.keys(childrenMapping),
     mapping: childrenMapping,

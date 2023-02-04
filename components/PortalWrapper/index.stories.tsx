@@ -1,6 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { onClickButtonArgType } from '@storybookRoot/args';
+
 import PortalWrapper from '.';
 
 // Filler text to simulate page content.
@@ -9,14 +11,6 @@ const fillerText =
 
 // Repeat the filler text.
 const arrayFillerText = new Array(20).fill(fillerText);
-
-// Selectable functions for the background onClick function.
-const backgroundOnClickMapping = {
-  'With Background onClick': () => {
-    window.alert('Background has been clicked!');
-  },
-  'No Alert': undefined,
-};
 
 // Selectable Portal content.
 const childrenMapping = {
@@ -42,13 +36,7 @@ const childrenMapping = {
 };
 
 const argTypes = {
-  backgroundOnClick: {
-    options: Object.keys(backgroundOnClickMapping),
-    mapping: backgroundOnClickMapping,
-    control: {
-      type: 'radio',
-    },
-  },
+  backgroundOnClick: onClickButtonArgType,
   children: {
     options: Object.keys(childrenMapping),
     mapping: childrenMapping,
@@ -77,5 +65,4 @@ const Template: ComponentStory<typeof PortalWrapper> = args => (
 export const Default = Template.bind({});
 Default.args = {
   children: childrenMapping['Lorem Ipsum with Button'],
-  backgroundOnClick: backgroundOnClickMapping['With Background onClick'],
 };

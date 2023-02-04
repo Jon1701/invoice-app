@@ -3,23 +3,12 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Alert, AlertTypes } from '.';
 
-const handleCloseButtonClickMappings = {
-  'with Click handler': () => {
-    alert('Close button has been clicked');
-  },
-  'without Click handler': undefined,
-};
+import { onClickButtonArgType } from '@storybookRoot/args';
 
 export default {
   component: Alert,
   argTypes: {
-    handleCloseButtonClick: {
-      options: Object.keys(handleCloseButtonClickMappings),
-      mapping: handleCloseButtonClickMappings,
-      control: {
-        type: 'radio',
-      },
-    },
+    handleCloseButtonClick: onClickButtonArgType,
   },
 } as ComponentMeta<typeof Alert>;
 

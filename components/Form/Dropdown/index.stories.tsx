@@ -7,7 +7,7 @@ import {
   disabledArgType,
   errorMessagesArgType,
   onClickButtonArgType,
-} from '@storybook/args';
+} from '@storybookRoot/args';
 
 export default {
   component: Dropdown,

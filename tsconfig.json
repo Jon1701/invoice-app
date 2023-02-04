@@ -22,7 +22,7 @@
       "@layouts/*": ["layouts/*"],
       "@pages/*": ["pages/*"],
       "@sampleData/*": ["sampleData/*"],
-      "@storybook/*": [".storybook/*"],
+      "@storybookRoot/*": [".storybook/*"],
       "@utils/*": ["utils/*"]
     }
   },

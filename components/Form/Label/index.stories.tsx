@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Input from '@components/Form/Input';
+
 import Label from '.';
 
 export default {

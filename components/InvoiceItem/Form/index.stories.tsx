@@ -1,7 +1,13 @@
 import React, { useReducer } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { InvoiceItem, CurrencyCode } from '@appTypes/index';
+import {
+  currencyCodeArgType,
+  currencyCodeMapping,
+  disabledArgType,
+  readOnlyArgType,
+} from '@storybookRoot/args';
+import { InvoiceItem } from '@appTypes/index';
 import { sampleInvoices } from '@sampleData/Invoices';
 
 import InvoiceItemForm, {
@@ -10,32 +16,12 @@ import InvoiceItemForm, {
   Action,
 } from '.';
 
-const booleanMapping = { true: true, false: false };
-
 export default {
   component: InvoiceItemForm,
   argTypes: {
-    currencyCode: {
-      options: Object.keys(CurrencyCode),
-      mapping: CurrencyCode,
-      control: {
-        type: 'radio',
-      },
-    },
-    disabled: {
-      options: Object.keys(booleanMapping),
-      mapping: booleanMapping,
-      control: {
-        type: 'radio',
-      },
-    },
-    readOnly: {
-      options: Object.keys(booleanMapping),
-      mapping: booleanMapping,
-      control: {
-        type: 'radio',
-      },
-    },
+    currencyCode: currencyCodeArgType,
+    disabled: disabledArgType,
+    readOnly: readOnlyArgType,
   },
 } as ComponentMeta<typeof InvoiceItemForm>;
 
@@ -67,5 +53,5 @@ const Template: ComponentStory<typeof InvoiceItemForm> = args => {
 export const Default = Template.bind({});
 Default.args = {
   formValues: sampleInvoices[0].items[0],
-  currencyCode: CurrencyCode.CAD,
+  currencyCode: currencyCodeMapping.CAD,
 };
