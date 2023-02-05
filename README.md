@@ -12,11 +12,14 @@ Web application used to generate Invoices.
 
 - [Node.js v18.13.0 LTS](https://nodejs.org/) via [Node Version Manager](https://github.com/nvm-sh/nvm)
   - Ensure that [Deeper Shell Integration](https://github.com/nvm-sh/nvm#deeper-shell-integration) is set up
+- [Docker Engine](https://docs.docker.com/engine/install/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 - [GNU Make](https://www.gnu.org/software/make/)
 - [Visual Studio Code](https://code.visualstudio.com)
   - [ESLint](https://open-vsx.org/extension/dbaeumer/vscode-eslint) Extension
   - [Prettier - Code Formatter](https://open-vsx.org/extension/esbenp/prettier-vscode) Extension
   - [Stylelint](https://open-vsx.org/extension/stylelint/vscode-stylelint) Extension
+  - [Docker](https://open-vsx.org/extension/ms-azuretools/vscode-docker) Extension
 
 ## Project Folder Structure
 
@@ -30,6 +33,7 @@ Web application used to generate Invoices.
 |
 ├── .next/                          # Build Folder
 ├── .storybook/                     # Storybook Configuration Files
+├── .volumes/                       # Docker volumes
 ├── .vscode/
 |       └── settings.json           # VSCode Settings
 |
@@ -38,11 +42,14 @@ Web application used to generate Invoices.
 ├── node_modules/                   # Node Dependencies Folder
 ├── pages/                          # Next.js Pages
 ├── public/                         # Public Assets
+├── sampleData/                     # Sample data
+├── utils/                          # Miscellaneous modules/functions
 |
 ├── .eslintrc.json                  # ESLint Configuration File
 ├── .gitignore                      # Files/Folders ignored by Git
 ├── .npmrc                          # npm Configuration File
 ├── .prettierignore                 # Files/Folders ignored by Prettier
+├── docker-compose.yml              # Docker Compose configuration file
 ├── jest.config.ts                  # Jest Configuration File
 ├── Makefile                        # Contains build targets
 ├── next-env.d.ts                   # Registers Next.js Types with TS Compiler
@@ -72,3 +79,6 @@ The following `make` commands are available:
 - `make build` to create a production build
 - `make test` to run all tests
 - `make disable-nextjs-telemetry` to disable Next.js telemetry
+- `make start-services` to start Docker services
+- `make stop-services` to stop Docker services
+- `make mongosh` to open Mongo Shell

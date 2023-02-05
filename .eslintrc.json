@@ -17,5 +17,5 @@
       { "ignoreRestSiblings": true }
     ]
   },
-  "ignorePatterns": ["node_modules/**/*", ".next/**/*"]
+  "ignorePatterns": ["node_modules/**/*", ".next/**/*", ".volumes/**/*"]
 }

@@ -2,10 +2,18 @@
 PATH_NODE_MODULES=./node_modules
 PATH_NODE_MODULES_BIN=${PATH_NODE_MODULES}/.bin
 
-# Ports.
+# Next.js variables.
 PORT_DEV_SERVER=8080
 PORT_STAGING_SERVER=8081
 PORT_STORYBOOK=6006
+
+# MongoDB variables.
+MONGO_DOCKER_CONTAINER_NAME=invoice-app
+MONGO_INITDB_ROOT_USERNAME=root
+MONGO_INITDB_ROOT_PASSWORD=password
+MONGO_PORT=27017
+MONGO_HOST=localhost
+MONGO_ADMIN_DATABASE=admin
 
 # Installs project dependencies.
 install: install-node-modules disable-nextjs-telemetry
@@ -36,7 +44,7 @@ run-prettier:
 run-stylelint:
 	@echo "Running Stylelint..."
 	@${PATH_NODE_MODULES_BIN}/stylelint \
-		'**/*.{ts,tsx,js}'
+		'**/*.{ts,tsx,js}' '!.volumes/**'
 	@echo "Done running Stylelint."
 
 # Runs Storybook.
@@ -78,3 +86,29 @@ test:
 	@echo "Running tests..."
 	@${PATH_NODE_MODULES_BIN}/jest
 	@echo "Done running tests."
+
+# Starts Docker services.
+start-services:
+	@echo "Starting Docker services..."
+	MONGO_DOCKER_CONTAINER_NAME=${MONGO_DOCKER_CONTAINER_NAME} \
+	MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME} \
+	MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD} \
+	docker-compose up
+	@echo "Done starting Docker services."
+
+# Stops Docker services.
+stop-services:
+	@echo "Stopping Docker serivces..."
+	MONGO_DOCKER_CONTAINER_NAME=${MONGO_DOCKER_CONTAINER_NAME} \
+	docker-compose down
+	@echo "Done stopping Docker services."
+
+# Runs Mongo Shell.
+mongosh:
+	@docker exec -it ${MONGO_DOCKER_CONTAINER_NAME} \
+		mongosh	\
+			--host ${MONGO_HOST}	\
+			--port ${MONGO_PORT}	\
+			--username ${MONGO_INITDB_ROOT_USERNAME}	\
+			--password ${MONGO_INITDB_ROOT_PASSWORD}	\
+			--authenticationDatabase ${MONGO_ADMIN_DATABASE}

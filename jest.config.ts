@@ -173,6 +173,7 @@ const config: Config = {
     '/.next/',
     '/.storybook/',
     '/stories/',
+    '/.volumes/',
   ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
